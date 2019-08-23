@@ -54,31 +54,37 @@
   };
 </script>
 
-  <meta name="description" content="something about swift">
-<meta property="og:type" content="website">
-<meta property="og:title" content="happt&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="UI要求实现一个性别选择,很明显就是UISegementedControl,只是外观需要自己修改实现一下,第一反应就想着去使用UISegementedControl了(当然你也可以自定义View去实现) 本文很浅薄地接涉及到了KVO ,KVC 等Runtime机制  UI如上图所示,任务清单如下  Segment 文字  边框 背景 (选中和未选中两个状态)   Segment之间的间距  消除原">
+<meta name="keywords" content="iOS,Swift,Runtime">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自定义UISegmentedControl">
+<meta property="og:url" content="http://yoursite.com/2019/08/23/customsizeUISegmentedControl/index.html">
 <meta property="og:site_name" content="happt&#39;s blog">
-<meta property="og:description" content="something about swift">
+<meta property="og:description" content="UI要求实现一个性别选择,很明显就是UISegementedControl,只是外观需要自己修改实现一下,第一反应就想着去使用UISegementedControl了(当然你也可以自定义View去实现) 本文很浅薄地接涉及到了KVO ,KVC 等Runtime机制  UI如上图所示,任务清单如下  Segment 文字  边框 背景 (选中和未选中两个状态)   Segment之间的间距  消除原">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/customsizeUISegmentedControl/genderSegmentControl.png">
+<meta property="og:image" content="http://yoursite.com/images/customsizeUISegmentedControl/playground.png">
+<meta property="og:image" content="http://yoursite.com/images/customsizeUISegmentedControl/result.png">
+<meta property="og:updated_time" content="2019-08-23T14:27:21.575Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="happt&#39;s blog">
-<meta name="twitter:description" content="something about swift">
-  <link rel="canonical" href="http://yoursite.com/">
+<meta name="twitter:title" content="自定义UISegmentedControl">
+<meta name="twitter:description" content="UI要求实现一个性别选择,很明显就是UISegementedControl,只是外观需要自己修改实现一下,第一反应就想着去使用UISegementedControl了(当然你也可以自定义View去实现) 本文很浅薄地接涉及到了KVO ,KVC 等Runtime机制  UI如上图所示,任务清单如下  Segment 文字  边框 背景 (选中和未选中两个状态)   Segment之间的间距  消除原">
+<meta name="twitter:image" content="http://yoursite.com/images/customsizeUISegmentedControl/genderSegmentControl.png">
+  <link rel="canonical" href="http://yoursite.com/2019/08/23/customsizeUISegmentedControl/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false,
+    isHome: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>happt's blog</title>
+  <title>自定义UISegmentedControl | happt's blog</title>
   <meta name="generator" content="Hexo 3.9.0">
   
 
@@ -179,10 +185,11 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content page-home">
+          <div id="content" class="content page-post-detail">
             
-  <section id="posts" class="posts-expand">
-      
+
+  <div id="posts" class="posts-expand">
+    
 
   <article class="post" itemscope itemtype="http://schema.org/Article">
   
@@ -201,9 +208,8 @@
       <meta itemprop="name" content="happt's blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/08/23/customsizeUISegmentedControl/" class="post-title-link" itemprop="url">自定义UISegmentedControl</a>
+        <h1 class="post-title" itemprop="name headline">自定义UISegmentedControl
+
           
         </h1>
 
@@ -237,7 +243,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>UI要求实现一个性别选择,很明显就是UISegementedControl,只是外观需要自己修改实现一下,第一反应就想着去使用UISegementedControl了(当然你也可以自定义View去实现)</p>
+        <p>UI要求实现一个性别选择,很明显就是UISegementedControl,只是外观需要自己修改实现一下,第一反应就想着去使用UISegementedControl了(当然你也可以自定义View去实现)</p>
 <p>本文很浅薄地接涉及到了KVO ,KVC 等Runtime机制</p>
 <p><img src="/images/customsizeUISegmentedControl/genderSegmentControl.png" alt="xx"></p>
 <p>UI如上图所示,任务清单如下</p>
@@ -298,285 +304,63 @@
 <p><img src="/images/customsizeUISegmentedControl/result.png" alt="res"></p>
 <p>仅仅是一个简单的控件,没有考虑到后续<code>insertSegment</code>的情况,本文中也没有用条纹背景,用灰色背景替代,有兴趣的小伙伴可以自己去实现完善.</p>
 
-        
-      
     </div>
 
     
     
     
+        
+      
+
       <footer class="post-footer">
-          <div class="post-eof"></div>
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+            
+              <a href="/tags/Swift/" rel="tag"># Swift</a>
+            
+              <a href="/tags/Runtime/" rel="tag"># Runtime</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/08/22/experienceInBuildingMyBlog/" rel="next" title="使用GitHub page搭建博客的经历">
+                  <i class="fa fa-chevron-left"></i> 使用GitHub page搭建博客的经历
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
         
       </footer>
+    
   </div>
   
   
   
   </article>
 
-    
-      
-
-  <article class="post" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/22/experienceInBuildingMyBlog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="happts">
-      <meta itemprop="description" content="something about swift">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="happt's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/08/22/experienceInBuildingMyBlog/" class="post-title-link" itemprop="url">使用GitHub page搭建博客的经历</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-08-22 19:53:19" itemprop="dateCreated datePublished" datetime="2019-08-22T19:53:19+08:00">2019-08-22</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-08-23 21:49:41" itemprop="dateModified" datetime="2019-08-23T21:49:41+08:00">2019-08-23</time>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>跟着教程搭起来一个简单的博客,顺便熟悉一下新的粉粉嫩嫩的电脑,做点什么东西.</p>
-<p>第一篇进行所谓的技术总结(估计搭博客的教程用一次就再也用不到了),旧教程总有过时的部分,希望这篇能给其他人带来点作用.(果然,贴了少女贴纸又加膜的打字手感一点都不好,还是撕掉打字爽)</p>
-<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><ol>
-<li><p>去 <a href="github.com">GitHub</a> 注册一个账号(默认大家都有了)</p>
-</li>
-<li><p>然后去新建一个仓库<br><img src="/images/githubpageExperience/newRepoCut.png" alt="新建仓库的截图"></p>
-</li>
-<li><p>仓库名字是 <em>你的GitHub账户.github.io</em> ,其他全部默认,创建</p>
-<p><img src="/images/githubpageExperience/newgithubpage.png" alt="page截图"></p>
-</li>
-<li><p>然后去本仓库的设置页<code>settings</code></p>
-<p><img src="/images/githubpageExperience/settingscut.png" alt="setting"></p>
-</li>
-<li><p>往下拉,找到<em>GitHubPage</em></p>
-<p><img src="/images/githubpageExperience/GitHubpage.png" alt="githubpageSetting"></p>
-<p>(设置完成了的话应该是上图所示的样子)</p>
-<p>第一次建时去选择一个主题 <em>Choose a theme</em> (选默认的就行,反正后面也要改)</p>
-</li>
-<li><p>选择完成后,开始你的第一次commit(随便输入,诸如init,first commit之类的)</p>
-</li>
-<li><p>建站结束,访问 <a href="happts.github.com">你的id.github.com</a> 就能看到了.</p>
-</li>
-<li><p>第一篇hello world 等着你.</p>
-</li>
-</ol>
-<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><p>假设你也用的是一台全新的macOS电脑,咱们从头开始.</p>
-<h3 id="Terminal-设置"><a href="#Terminal-设置" class="headerlink" title="Terminal 设置"></a>Terminal 设置</h3><p>总得要从本地管理你的博客,修改的差不多了再上传到GitHub.先把工具整顺手了咱们再开始.</p>
-<ol>
-<li>去App Store安装 Xcode ,打开,等待安装成功 (如果你不需要Xcode可以跳过)</li>
-<li>反正我装了,跳过Xcode会缺<strong>Command Line Tools</strong>,里面包含Git等命令行工具,不保证下面的步骤有没有效</li>
-<li>打开 Terminal (终端), 弹出小黑框</li>
-</ol>
-<h4 id="安装homebrew-点我进官网"><a href="#安装homebrew-点我进官网" class="headerlink" title="安装homebrew(点我进官网)"></a>安装<a href="https://brew.sh" target="_blank" rel="noopener">homebrew(点我进官网)</a></h4><p>这是个包管理工具,似乎是能补全⤴️没装Xcode缺失的东西</p>
-<ol>
-<li>在Terminal中输入</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure>
-
-<p>   等待安装完成</p>
-<ol start="2">
-<li><p>安装完成后在Terminal中输入 <code>git --version</code> </p>
-<p>看看有没有效果,如果有</p>
-<p> <code>git version 2.20.1 (Apple Git-117)</code> </p>
-<p>类似这样的文字输出到屏幕上那就有Git了</p>
-</li>
-<li><p>话说你用macOS还不下载一个Xcode??? ,就不该考虑没有Xcode的情况(溜了溜了)</p>
-</li>
-</ol>
-<h4 id="Terminal切换zsh"><a href="#Terminal切换zsh" class="headerlink" title="Terminal切换zsh"></a>Terminal切换zsh</h4><p>zsh + <a href="https://ohmyz.sh/" target="_blank" rel="noopener">oh my zsh</a> 会比 默认的 bash 好用点,你有自己的习惯这部分可以跳过</p>
-<ol>
-<li><p>依旧在Terminal中,输入 <code>chsh -s /usr/local/bin/zsh</code> 切换到zsh</p>
-</li>
-<li><p>下载oh my zsh 输入 </p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c &quot;$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>等待安装完成后关了Terminal再重进来, 左边应该会出现一个小箭头,这就切换成功了</li>
-</ol>
-<h3 id="GitHub-Desktop-不使用主题配置网站"><a href="#GitHub-Desktop-不使用主题配置网站" class="headerlink" title="GitHub Desktop  +  不使用主题配置网站"></a>GitHub Desktop  +  不使用主题配置网站</h3><p>下载一个<a href="https://desktop.github.com/" target="_blank" rel="noopener">GitHub Desktop</a> ,管理起来可能会方便一点</p>
-<p>下载安装,登录,然后把自己的博客仓库clone到本地(自己选路径)</p>
-<p><img src="/images/githubpageExperience/cloneRepo.png" alt="clone"></p>
-<p><img src="/images/githubpageExperience/selRepo.png" alt="selectCloneRep"></p>
-<ol>
-<li><p>去finder里面康康这个文件夹,这就是你的网站啦.</p>
-<p><img src="/images/githubpageExperience/pageFolder.png" alt="page"></p>
-</li>
-<li><p><code>_config.yml</code> 是配置文件,具体配置功能自己去找</p>
-</li>
-<li><p><code>index.md</code> 或是 <code>index.html</code> 就是你的主页了, <a href="happts.github.io">happts.github.io</a> 访问你的网址首先出现的就是<code>index.html</code></p>
-</li>
-<li><p>其余的网页或者资源就自己放吧, 记得使用相对路径去访问资源就好啦</p>
-<p>比如我在第一篇文章中添加的一张sans  <code>![sans](images/sans.jpg)</code> </p>
-</li>
-</ol>
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
   </div>
-  
-  
-  
-  </article>
-
-    
-      
-
-  <article class="post" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/21/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="happts">
-      <meta itemprop="description" content="something about swift">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="happt's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/08/21/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-08-21 19:55:23" itemprop="dateCreated datePublished" datetime="2019-08-21T19:55:23+08:00">2019-08-21</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-08-22 01:33:45" itemprop="dateModified" datetime="2019-08-22T01:33:45+08:00">2019-08-22</time>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-<p><img src="/images/sans.jpg" alt="sans"></p>
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-  </section>
-
-  
 
 
           </div>
           
+    
+    <div class="comments" id="gitalk-container"></div>
+  
 
         </div>
           
@@ -591,6 +375,11 @@
 
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc" data-target="post-toc-wrap">
@@ -603,6 +392,10 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc">
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#消除原生效果"><span class="nav-number">1.</span> <span class="nav-text">消除原生效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Segment"><span class="nav-number">2.</span> <span class="nav-text">Segment</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#title"><span class="nav-number">2.1.</span> <span class="nav-text">title</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#边框-amp-背景"><span class="nav-number">2.2.</span> <span class="nav-text">边框&amp;背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#间距"><span class="nav-number">2.3.</span> <span class="nav-text">间距</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加观察"><span class="nav-number">3.</span> <span class="nav-text">添加观察</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初步设想"><span class="nav-number">3.1.</span> <span class="nav-text">初步设想</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#观察整体-UISegmentedControl-selectedSementIndex"><span class="nav-number">3.1.1.</span> <span class="nav-text">观察整体: UISegmentedControl.selectedSementIndex</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后续的想法"><span class="nav-number">3.2.</span> <span class="nav-text">后续的想法:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#观察局部-Segment-isSelected"><span class="nav-number">3.2.1.</span> <span class="nav-text">观察局部: Segment.isSelected</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UISegementedControl的subview是什么"><span class="nav-number">3.2.2.</span> <span class="nav-text">UISegementedControl的subview是什么</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Segment-是否有-isSelected-属性"><span class="nav-number">3.2.3.</span> <span class="nav-text">Segment 是否有 isSelected 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加监听"><span class="nav-number">3.2.4.</span> <span class="nav-text">添加监听</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#封装控件"><span class="nav-number">4.</span> <span class="nav-text">封装控件</span></a></li></ol></div>
+          </div>
+        
       </div>
       <!--/noindex-->
 
@@ -739,6 +532,27 @@
 
 
   
+  <script src="/js/post-details.js?v=7.3.0"></script>
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: '2e78e1e3dbe98cd40d66',
+      clientSecret: '34dc51adc2c824aeebd323ed7e51ecf07019c9e9',
+      repo: 'happts.github.io',
+      owner: 'happts',
+      admin: ['happts'],
+      id: '7328e18eb18bd07a543888a2565ca077',
+        language: window.navigator.language || window.navigator.userLanguage,
+      
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
 
 </body>
 </html>

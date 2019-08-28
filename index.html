@@ -239,7 +239,7 @@
                 
               
 
-              <time title="创建时间：2019-08-28 21:24:09 / 修改时间：21:42:42" itemprop="dateCreated datePublished" datetime="2019-08-28T21:24:09+08:00">2019-08-28</time>
+              <time title="创建时间：2019-08-28 21:24:09 / 修改时间：22:33:27" itemprop="dateCreated datePublished" datetime="2019-08-28T21:24:09+08:00">2019-08-28</time>
             </span>
           
             
@@ -273,7 +273,15 @@
 
       
           <p>UITableviewCell 高度自适应, 我们最熟悉的就是QQ空间的说说动态和微信朋友圈了. 之前自己网上找的一些教程,要么就是用<code>UILabel</code>或者<code>UITextView</code>作为例子, 要么就是计算高度了. 可是正如我所提到的说说和微信朋友圈, 那一个<code>Cell</code>的内容都是不固定的, 好几条评论都是多出来的<code>view</code>, 教程不适用,决定自己弄.</p>
-
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/08/28/dynamic-height-tableviewcell/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -339,7 +347,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-27 22:36:55" itemprop="dateModified" datetime="2019-08-27T22:36:55+08:00">2019-08-27</time>
+                <time title="修改时间：2019-08-28 22:33:04" itemprop="dateModified" datetime="2019-08-28T22:33:04+08:00">2019-08-28</time>
               </span>
             
           
@@ -381,191 +389,15 @@
 <li>进行UI与性能测试</li>
 <li>使用代码覆盖工具</li>
 </ul>
-<h2 id="明确你要测试什么"><a href="#明确你要测试什么" class="headerlink" title="明确你要测试什么"></a>明确你要测试什么</h2><p>如果说你要扩展你现有的app,你首先要给那些你打算改变的部分写测试.</p>
-<p>通常测试应该包含以下内容:</p>
-<ul>
-<li>核心功能: Model 层的类,方法,以及它与controller的交互</li>
-<li>常见的UI工作流</li>
-<li>边界条件</li>
-<li>修复bug</li>
-</ul>
-<h2 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h2><p>高效的单元测试: <strong>FIRST</strong></p>
-<ul>
-<li><strong>Fast</strong> : 测试运行要快</li>
-<li><strong>Independent/Isolated</strong> : 测试是独立的,不要共享状态</li>
-<li><strong>Repeatable</strong>: 测试要可复现, 相同的测试运行多少次结果都相同. 使用外部数据或者并发问题都会导致不确定的失败.</li>
-<li><strong>Self-validating</strong>: 自确认. 测试是自动化的. 输出结果就应该告知是否通过,而不是程序员根据输出自己去解释判断</li>
-<li><strong>Timely</strong>: 及时的. 代码最好在实际使用前就把测试给做了.(测试驱动开发)</li>
-</ul>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>从原网址去下载工程文件,<strong>Download Materials</strong> 点这个按钮去下载. 里面有两个工程 <em>BullsEye</em> 和 <em>HalfTunes</em></p>
-<ul>
-<li><strong>BullsEye</strong> 是个游戏(大致内容: 根据进度条猜数字/根据给出数字拖进度条)</li>
-<li><strong>HalfTunes</strong> 主要功能是网络请求,解析json</li>
-<li>实际功能不重要,跟着教程学测试就行了</li>
-</ul>
-<h2 id="Xcode-中进行单元测试-Unit-Test"><a href="#Xcode-中进行单元测试-Unit-Test" class="headerlink" title="Xcode 中进行单元测试(Unit Test)"></a>Xcode 中进行单元测试(Unit Test)</h2><h3 id="创建一个Unit-Test-Target"><a href="#创建一个Unit-Test-Target" class="headerlink" title="创建一个Unit Test Target"></a>创建一个Unit Test Target</h3><p>这部分使用 <strong>BullsEye</strong> 工程,打开它. 转到测试导航栏(快捷键: Command + 6)</p>
-<p>新建一个单元测试Target(参考下图)</p>
-<p><img src="https://koenig-media.raywenderlich.com/uploads/2016/12/TestNavigator1.png" alt="TestNavigator1"></p>
-<p>全部默认,创建. 在测试导航栏点一下你新建的BullsEyeTests类,就能看到了</p>
-<p><img src="https://koenig-media.raywenderlich.com/uploads/2016/12/TestNavigator2.png" alt="TestNavigator2"></p>
-<p>导入了<strong>XCTest</strong>, 定义了 <code>BullsEyeTests</code>(继承<code>XCTestCase</code>),里面还有<code>setUp</code>,<code>tearDown()</code>,以及测试方法</p>
-<ol>
-<li>测试方法就是你自己写要测试的东西,必须以test开头</li>
-<li><code>setUp</code>是在<code>testXXX()</code>执行前会执行的方法,用来创造环境(?)</li>
-<li><code>tearDown</code>是在<code>testXXX()</code>执行完成后执行的方法,用来清空环境,以免污染下一个测试</li>
-</ol>
-<p>运行测试的三种方法:</p>
-<ol>
-<li>运行全部测试类: <strong>Product</strong> ▸ <strong>Test</strong> ,或者 <code>Command + U</code></li>
-<li>运行单个测试类: 在左边的Test导航栏中点击一个类右边的箭头,下一条也适用</li>
-<li>运行单个测试方法: 点击代码行数左边,方法前面的菱形◇</li>
-</ol>
-<p>你现在点的话,所有测试都能很快运行完,而且测试全部通过(因为你测试里面啥也没写)</p>
-<p>测试通过的话,◇会变成绿色,如果是性能测试(performance),去点<code>self.measure</code>的◇还会出现测试结果:</p>
-<p><img src="https://koenig-media.raywenderlich.com/uploads/2016/12/TestNavigator4-650x341.png" alt="TestNavigator3"></p>
-<p>当前教程里<code>testExample()</code>和<code>testPerformanceExample()</code>两个测试方法都用不到,删了吧</p>
-<h2 id="使用XCTAssert去测试模型"><a href="#使用XCTAssert去测试模型" class="headerlink" title="使用XCTAssert去测试模型"></a>使用XCTAssert去测试模型</h2><p>Assert: 断言, 自己百度</p>
-<p>首先,我们测试 BullsEye’s 的核心功能model:<code>BullsEyeGame</code>是否计算出正确的分数</p>
-<p>在当前的测试代码文件 <strong>BullsEyeTests.swift</strong>中, 再<code>import</code>一个东西</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="meta">@testable</span> <span class="keyword">import</span> BullsEye</span><br></pre></td></tr></table></figure>
-
-<p>这样单元测试才能访问到BullsEye内部的东西</p>
-<p>在<code>BullsEyeTests</code>类里面加一个属性:</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> sut: <span class="type">BullsEyeGame!</span></span><br></pre></td></tr></table></figure>
-
-<p>SUT : System Under Test (被测系统)</p>
-<p>接下来,去写<code>setUp()</code></p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">super</span>.setUp()</span><br><span class="line">sut = <span class="type">BullsEyeGame</span>()</span><br><span class="line">sut.startNewGame()</span><br></pre></td></tr></table></figure>
-
-<p>给sut实例化,然后调用<code>startNewGame()</code>初始化<code>targetValue</code>(这个存分数的变量是主要的测试对象)</p>
-<p>再写<code>tearDown()</code></p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line">sut = <span class="literal">nil</span></span><br><span class="line"><span class="keyword">super</span>.tearDown()</span><br></pre></td></tr></table></figure>
-
-<h2 id="实现你的第一个测试方法"><a href="#实现你的第一个测试方法" class="headerlink" title="实现你的第一个测试方法"></a>实现你的第一个测试方法</h2><p>在<code>BullsEyeTests</code>类里面写个方法:</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">testScoreIsComputed</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">// 1. given</span></span><br><span class="line">	<span class="keyword">let</span> guess = sut.targetValue + <span class="number">5</span></span><br><span class="line">	<span class="comment">// 2. when</span></span><br><span class="line">	sut.check(guess: guess)</span><br><span class="line">	<span class="comment">// 3. then</span></span><br><span class="line">	<span class="type">XCAssertEqual</span>(sut.scoreRound,<span class="number">95</span>,<span class="string">"Score computed from guess is wrong"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>一个好的测试模板应该是这样的,<strong>given</strong>,<strong>when</strong>,<strong>then</strong>:</p>
-<ol>
-<li><p><strong>Given</strong>: 设置你需要的值</p>
-<p>在这个例子中,你创建了一个<code>guess</code>作为测试用的值,<code>sut.targetValue</code>就是你要猜的数真实的值,你要用到<code>guess</code>去匹配和<code>targetValue</code>相差多少</p>
-</li>
-<li><p><strong>When</strong>: 在这里执行你要测试的代码: <code>check(guess:)</code></p>
-<p> (在测试里,设我们猜的数比<code>targetValue</code>多5</p>
-<p> 那么当<code>sut.check(guess:)</code>去核实你猜测的数时,一定会偏离5,即得分一定是95</p>
-<p> 这是这个游戏的计分规则,完全猜对是100,偏差越多扣分越多</p>
-<p> 最后使用Equal相等断言,若<code>sut.scoreRound</code>与95相等,通过测试否则测试失败,输出第三个参数中的message)</p>
-</li>
-<li><p><strong>Then</strong>: 在这里你去判断测试结果是否为你期望的结果</p>
-</li>
-</ol>
-<p>运行一下,测试通过,◇变绿,弹出Test Succeeded<br><img src="https://koenig-media.raywenderlich.com/uploads/2019/01/succeeded.png" alt="succeeded"></p>
-<h2 id="Debug-测试"><a href="#Debug-测试" class="headerlink" title="Debug 测试"></a>Debug 测试</h2><p>再写一个测试,刚才是猜大了,现在猜小了试试</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">testScoreIsComputedWhenGuessLTTarget</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="comment">// 1. given</span></span><br><span class="line">  <span class="keyword">let</span> guess = sut.targetValue - <span class="number">5</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 2. when</span></span><br><span class="line">  sut.check(guess: guess)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 3. then</span></span><br><span class="line">  <span class="type">XCTAssertEqual</span>(sut.scoreRound, <span class="number">95</span>, <span class="string">"Score computed from guess is wrong"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>加一个测试失败时的断点,当断言失败时程序暂停</p>
-<p><img src="https://koenig-media.raywenderlich.com/uploads/2016/12/AddTestFailureBreakpoint.png" alt="addTestFalureBreakpoint"></p>
-<p>运行一下,<strong>Test Failure</strong>,那肯定是代码写错了,现在有断点,看看控制台的情况</p>
-<p><img src="https://koenig-media.raywenderlich.com/uploads/2019/01/TestFailure-1-650x372.png" alt="TestFailure"></p>
-<p><code>guess</code>是<code>targetValue - 5</code>没毛病,但是<code>scoreRound</code>是105,不是95. 那就是<strong>when</strong> 中的 <code>sut.check(guess:)</code>没算对.这回去<code>check(guess:)</code>里面打断点/单步调试看看哪出错了</p>
-<p><img src="https://koenig-media.raywenderlich.com/uploads/2016/12/DebugConsole.png" alt></p>
-<p>算分的时候没用绝对值,直接做差了,改掉.</p>
-<p>再跑一下测试,这次应该通过了</p>
-<h2 id="用XCTestExpectation去测试异步操作"><a href="#用XCTestExpectation去测试异步操作" class="headerlink" title="用XCTestExpectation去测试异步操作"></a>用XCTestExpectation去测试异步操作</h2><p>换工程了,打开<strong>HalfTunes</strong>工程,这主要就是用<code>URLSession</code>去请求API</p>
-<p>异步的代码有延时,不是执行到这里立马就完成并return,用XCTestExpectation就是让你的测试去等待一会,等待异步操作完成</p>
-<p>异步测试一般来说都挺慢的,最好把它和那些运行快的单元测试分开测</p>
-<p>还是前面的流程,new unit test target,起名HalfTunesSlowTests. 默认,创建.打开<code>HalfTunesSlowTests</code>类,声明:</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="meta">@testable</span> <span class="keyword">import</span> HalfTunes</span><br></pre></td></tr></table></figure>
-
-<p>声明sut,这回是<code>URLSession</code>,在<code>setUp()</code>中创建,<code>tearDown()</code>里面释放</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> sut: <span class="type">URLSession!</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">setUp</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">super</span>.setUp()</span><br><span class="line">  sut = <span class="type">URLSession</span>(configuration: .<span class="keyword">default</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tearDown</span><span class="params">()</span></span> &#123;</span><br><span class="line">  sut = <span class="literal">nil</span></span><br><span class="line">  <span class="keyword">super</span>.tearDown()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>写个异步测试:</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Asynchronous test: success fast, failure slow</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">testValidCallToiTunesGetsHTTPStatusCode200</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="comment">// given</span></span><br><span class="line">  <span class="keyword">let</span> url = </span><br><span class="line">    <span class="type">URL</span>(string: <span class="string">"https://itunes.apple.com/search?media=music&amp;entity=song&amp;term=abba"</span>)</span><br><span class="line">  <span class="comment">// 1</span></span><br><span class="line">  <span class="keyword">let</span> promise = expectation(description: <span class="string">"Status code: 200"</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// when</span></span><br><span class="line">  <span class="keyword">let</span> dataTask = sut.dataTask(with: url!) &#123; data, response, error <span class="keyword">in</span></span><br><span class="line">    <span class="comment">// then</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">let</span> error = error &#123;</span><br><span class="line">      <span class="type">XCTFail</span>(<span class="string">"Error: \(error.localizedDescription)"</span>)</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> <span class="keyword">let</span> statusCode = (response <span class="keyword">as</span>? <span class="type">HTTPURLResponse</span>)?.statusCode &#123;</span><br><span class="line">      <span class="keyword">if</span> statusCode == <span class="number">200</span> &#123;</span><br><span class="line">        <span class="comment">// 2</span></span><br><span class="line">        promise.fulfill()</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="type">XCTFail</span>(<span class="string">"Status code: \(statusCode)"</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  dataTask.resume()</span><br><span class="line">  <span class="comment">// 3</span></span><br><span class="line">  wait(<span class="keyword">for</span>: [promise], timeout: <span class="number">5</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这部分测试内容: <code>URLSession</code>向iTunes发送一条请求,然后收到200状态码</p>
-<ul>
-<li>given: 给定要访问的URL</li>
-<li>when: 声明网络请求 <code>dataTask(with:_,_,_:)</code>,执行<code>dataTask.resume()</code></li>
-<li>then: 网络请求完成的回调部分,如果有<code>error</code>就是测试失败,没有说明请求成功,再看看响应的状态码是不是<code>200</code></li>
-</ul>
-<ol>
-<li><strong>expectation(description:)</strong>: 得到一个<code>XCTestExpectation</code>,存到变量<code>promise</code>里面,<code>description</code>是描述你期望发生什么</li>
-<li><strong>promise.fulfill()</strong>: 在你满足期望的地方调用它,表明测试达成</li>
-<li><strong>wait(for:timeout:)</strong>: 保持本测试运行,直到所有的期望都达成,或者超时</li>
-</ol>
-<p>运行这个测试,用模拟机时电脑记得联网</p>
-<h2 id="测试失败时快速结束"><a href="#测试失败时快速结束" class="headerlink" title="测试失败时快速结束"></a>测试失败时快速结束</h2><p>首先我们需要创造失败条件, 把URL改错,比如iTunes少个s</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> url = </span><br><span class="line">  <span class="type">URL</span>(string: <span class="string">"https://itune.apple.com/search?media=music&amp;entity=song&amp;term=abba"</span>)</span><br></pre></td></tr></table></figure>
-
-<p>这次再运行测试,测试等到超时才结束. 这是因为你一开始就假定请求总是会成功,然后在请求成功的地方去调用 <code>promise.fulfill()</code>. 然而这次失败了,该test等到超时之前都没有达成期望,所以等到了超时才结束.</p>
-<p>我们改进一下这种情况,改变假定: 不再期望请求成功,只要收到响应的回调就认定期望达成. 然后我们再去断言回调得到的内容(error 和 statusCode),如果是成功,那么<code>error</code>是<code>nil</code>,<code>statusCode</code>与<code>200</code>相等,否则认为失败</p>
-<p>下面给出新的test</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">testCallToiTunesCompletes</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="comment">// given</span></span><br><span class="line">  <span class="keyword">let</span> url = </span><br><span class="line">    <span class="type">URL</span>(string: <span class="string">"https://itune.apple.com/search?media=music&amp;entity=song&amp;term=abba"</span>)</span><br><span class="line">  <span class="keyword">let</span> promise = expectation(description: <span class="string">"Completion handler invoked"</span>)</span><br><span class="line">  <span class="keyword">var</span> statusCode: <span class="type">Int?</span></span><br><span class="line">  <span class="keyword">var</span> responseError: <span class="type">Error?</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// when</span></span><br><span class="line">  <span class="keyword">let</span> dataTask = sut.dataTask(with: url!) &#123; data, response, error <span class="keyword">in</span></span><br><span class="line">    statusCode = (response <span class="keyword">as</span>? <span class="type">HTTPURLResponse</span>)?.statusCode</span><br><span class="line">    responseError = error</span><br><span class="line">    promise.fulfill()</span><br><span class="line">  &#125;</span><br><span class="line">  dataTask.resume()</span><br><span class="line">  wait(<span class="keyword">for</span>: [promise], timeout: <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// then</span></span><br><span class="line">  <span class="type">XCTAssertNil</span>(responseError)</span><br><span class="line">  <span class="type">XCTAssertEqual</span>(statusCode, <span class="number">200</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行这个测试,它会很快结束,而不是等到超时结束.</p>
-<h2 id="伪造对象和交互"><a href="#伪造对象和交互" class="headerlink" title="伪造对象和交互"></a>伪造对象和交互</h2><p>现在这个app的异步测试通过了,你还想测试一下用代码解析json是否正确. 不仅仅是URLSession,这些数据也可以来自数据库或者云上.</p>
-<p>大多数app都会与系统或者库对象有交互, 但是这些对象都不是你程序员控制的, 直接测试的话不仅慢而且无法复现,违反了<strong>FIRST</strong>原则中的两条. 因此我们通过从<code>stubs</code>获得输入信息或者更新<code>mock</code>对象来模拟这些交互,实现测试. </p>
-<p>当你的代码依赖与系统或者库时,使用伪造来进行测试. 你可以创建一个伪造的对象来参与这部分,或者说把你的伪造对象注入到代码中.  <a href="https://www.objc.io/issues/15-testing/dependency-injection/" target="_blank" rel="noopener">依赖注入的几种方法</a></p>
-<h2 id="从Stub中获得伪造的输入"><a href="#从Stub中获得伪造的输入" class="headerlink" title="从Stub中获得伪造的输入"></a>从Stub中获得伪造的输入</h2><p>在这次的测试中, 你需要检查app的 <code>updateSearchResults(_:)</code> 是否正确解析了通过session下载得到的数据, 我们通过检查 <code>searchResults.count</code> 的值是否正确. 这次的SUT是viewcontroller, 你需要伪造session以及下载得到的数据</p>
-<p>新建一个单元测试Target. 起名为<strong>HalfTunesFakeTests</strong>. 打开 <strong>HalfTunesFakeTests.swift</strong> 并且再次导入app模块</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="meta">@testable</span> <span class="keyword">import</span> HalfTunes</span><br></pre></td></tr></table></figure>
-
-<p>还是老样子,设置sut,改setUp和tearDown</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> sut: <span class="type">SearchViewController!</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">setUp</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">super</span>.setUp()</span><br><span class="line">  <span class="comment">// 这里是用了storyboard,所以这样获取VC,纯代码的话直接生成就好了</span></span><br><span class="line">  sut = <span class="type">UIStoryboard</span>(name: <span class="string">"Main"</span>, bundle: <span class="literal">nil</span>)</span><br><span class="line">    .instantiateInitialViewController() <span class="keyword">as</span>? <span class="type">SearchViewController</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tearDown</span><span class="params">()</span></span> &#123;</span><br><span class="line">  sut = <span class="literal">nil</span></span><br><span class="line">  <span class="keyword">super</span>.tearDown()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Note: 这里SUT设置成VC,是因为代码写的恶心了,没做好分层,别把所有的东西都写到VC里.如何优化可以查查MVC,MVVM等涉及模式</p>
-<p>接下来我们需要得到伪造用的响应JSON数据,还有伪造session. 我们只要一点点数据,所以</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line">https:<span class="comment">//itunes.apple.com/search?media=music&amp;entity=song&amp;term=abba&amp;limit=3</span></span><br></pre></td></tr></table></figure>
-
-<p>复制这个URL到浏览器里面,有三条数据就行了. 下载的文件就是我们需要的数据, 给他改个名<code>abbaData.json</code></p>
-<p>把这个文件拖到<strong>HalfTunesFakeTests</strong>group里(注意看Xcode,一个测试target是一个group,真正的app工程代码在另一个group里面)</p>
-<p>在 HalfTunes 的project里面有一个支持文件 <strong>DHURLSessionMock.swift</strong>. 里面定义了一个简单的协议<code>DHURLSession</code>, 里面有通过<code>URL</code>或者<code>URLRequest</code>去创建请求任务的方法. 这个文件还定义了<code>URLSessionMock</code>, 它遵循了上面的协议,可以让你用你自己定义的(data,response,erro)去创建一个mock<code>URLSession</code>.</p>
-<p>然后去 <strong>HalfTunesFakeTests.swift</strong> 里面写代码吧</p>
-<p>sut的设置:把伪造数据注入</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> testBundle = <span class="type">Bundle</span>(<span class="keyword">for</span>: type(of: <span class="keyword">self</span>))</span><br><span class="line"><span class="keyword">let</span> path = testBundle.path(forResource: <span class="string">"abbaData"</span>, ofType: <span class="string">"json"</span>)</span><br><span class="line"><span class="keyword">let</span> data = <span class="keyword">try</span>? <span class="type">Data</span>(contentsOf: <span class="type">URL</span>(fileURLWithPath: path!), options: .alwaysMapped)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> url = </span><br><span class="line">  <span class="type">URL</span>(string: <span class="string">"https://itunes.apple.com/search?media=music&amp;entity=song&amp;term=abba"</span>)</span><br><span class="line"><span class="keyword">let</span> urlResponse = <span class="type">HTTPURLResponse</span>(</span><br><span class="line">  url: url!, </span><br><span class="line">  statusCode: <span class="number">200</span>, </span><br><span class="line">  httpVersion: <span class="literal">nil</span>, </span><br><span class="line">  headerFields: <span class="literal">nil</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> sessionMock = <span class="type">URLSessionMock</span>(data: data, response: urlResponse, error: <span class="literal">nil</span>)</span><br><span class="line">sut.defaultSession = sessionMock</span><br></pre></td></tr></table></figure>
-
-<p>现在你就能测试<code>updateSearchResults(_:)</code>去解析伪造数据到底解析成功了没.</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test_UpdateSearchResults_ParsesData</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="comment">// given</span></span><br><span class="line">  <span class="keyword">let</span> promise = expectation(description: <span class="string">"Status code: 200"</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// when</span></span><br><span class="line">  <span class="comment">// 开始时就应该是0,没有results</span></span><br><span class="line">  <span class="type">XCTAssertEqual</span>(sut.searchResults.<span class="built_in">count</span>, <span class="number">0</span>, <span class="string">"searchResults should be empty before the data task runs"</span>)</span><br><span class="line">  <span class="keyword">let</span> url = <span class="type">URL</span>(string: <span class="string">"https://itunes.apple.com/search?media=music&amp;entity=song&amp;term=abba"</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> dataTask = sut.defaultSession.dataTask(with: url!) &#123;</span><br><span class="line">    data, response, error <span class="keyword">in</span></span><br><span class="line">    <span class="comment">// if HTTP request is successful, call updateSearchResults(_:) </span></span><br><span class="line">    <span class="comment">// which parses the response data into Tracks</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">let</span> error = error &#123;</span><br><span class="line">      <span class="built_in">print</span>(error.localizedDescription)</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> <span class="keyword">let</span> httpResponse = response <span class="keyword">as</span>? <span class="type">HTTPURLResponse</span>,</span><br><span class="line">      httpResponse.statusCode == <span class="number">200</span> &#123;</span><br><span class="line">      <span class="keyword">self</span>.sut.updateSearchResults(data)</span><br><span class="line">    &#125;</span><br><span class="line">    promise.fulfill()</span><br><span class="line">  &#125;</span><br><span class="line">  dataTask.resume()</span><br><span class="line">  wait(<span class="keyword">for</span>: [promise], timeout: <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// then</span></span><br><span class="line">  <span class="comment">// 网络请求后,应该从伪造的数据中解析到了3条数据</span></span><br><span class="line">  <span class="type">XCTAssertEqual</span>(sut.searchResults.<span class="built_in">count</span>, <span class="number">3</span>, <span class="string">"Didn't parse 3 items from fake response"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>网络请求是异步操作,还得按照异步操作去写.</p>
-<p>运行测试,通过测试,而且很快结束,因为没有真的去网络请求,那是你伪造的</p>
-<h2 id="mock-对象的假更新"><a href="#mock-对象的假更新" class="headerlink" title="mock 对象的假更新"></a>mock 对象的假更新</h2><p>上面那个测试用例用了stub从伪造对象里提供输入,接下来这部分你会用mock去测试,你的代码是否正确更新了<code>UserDefaults</code></p>
-<p>打开<strong>BullsEye</strong> 工程. 前面也说过这游戏有两个模式. 两个模式的转换时通过一个UISegmentedControl来控制的,并且把当前模式存到了UserDefaults里面.</p>
-<p>我们这次检查app是不是正确地保存了<code>gameStyle</code></p>
-<p>还是切到Test导航栏,新建一个单元测试,起名<strong>BullsEyeMockTests</strong>.这次不仅要导入app模块,还要自己定义一个类</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="meta">@testable</span> <span class="keyword">import</span> BullsEye</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MockUserDefaults</span>: <span class="title">UserDefaults</span> </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> gameStyleChanged = <span class="number">0</span></span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">set</span><span class="params">(<span class="number">_</span> value: Int, forKey defaultName: String)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> defaultName == <span class="string">"gameStyle"</span> &#123;</span><br><span class="line">      gameStyleChanged += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>MockUserDefaults</code> 重写了 <code>set(_:forKey:)</code>方法,用来增加<code>gameStyleChanged</code>这个标志. 也许你觉得用<code>bool</code>更熟悉,但是用<code>Int</code>更灵活:还能检查你调用了多少次这个方法.</p>
-<p>声明SUT:</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> sut: <span class="type">ViewController!</span></span><br><span class="line"><span class="keyword">var</span> mockUserDefaults: <span class="type">MockUserDefaults!</span></span><br></pre></td></tr></table></figure>
-
-<p>写<code>setUp()</code>和<code>tearDown()</code></p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">setUp</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">super</span>.setUp()</span><br><span class="line"></span><br><span class="line">  sut = <span class="type">UIStoryboard</span>(name: <span class="string">"Main"</span>, bundle: <span class="literal">nil</span>)</span><br><span class="line">    .instantiateInitialViewController() <span class="keyword">as</span>? <span class="type">ViewController</span></span><br><span class="line">  mockUserDefaults = <span class="type">MockUserDefaults</span>(suiteName: <span class="string">"testing"</span>)</span><br><span class="line">  sut.defaults = mockUserDefaults</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tearDown</span><span class="params">()</span></span> &#123;</span><br><span class="line">  sut = <span class="literal">nil</span></span><br><span class="line">  mockUserDefaults = <span class="literal">nil</span></span><br><span class="line">  <span class="keyword">super</span>.tearDown()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>建好了sut,并且把伪造数据注入其中</p>
-<p>开始写测试方法:</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">testGameStyleCanBeChanged</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="comment">// given</span></span><br><span class="line">  <span class="keyword">let</span> segmentedControl = <span class="type">UISegmentedControl</span>()</span><br><span class="line"></span><br><span class="line">  <span class="comment">// when</span></span><br><span class="line">  <span class="type">XCTAssertEqual</span>(mockUserDefaults.gameStyleChanged, <span class="number">0</span>,<span class="string">"gameStyleChanged should be 0 before sendActions"</span>)</span><br><span class="line">  segmentedControl.addTarget(sut,</span><br><span class="line">    action: #selector(<span class="type">ViewController</span>.chooseGameStyle(<span class="number">_</span>:)), <span class="keyword">for</span>: .valueChanged)</span><br><span class="line">  segmentedControl.sendActions(<span class="keyword">for</span>: .valueChanged)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// then</span></span><br><span class="line">  <span class="type">XCTAssertEqual</span>(</span><br><span class="line">    mockUserDefaults.gameStyleChanged, </span><br><span class="line">    <span class="number">1</span>, </span><br><span class="line">    <span class="string">"gameStyle user default wasn't changed"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>最开始的时候, <code>gameStyleChanged</code> 是0,这里调用 <code>sendActions(for:)</code> ,他就触发了<code>ViewController.chooseGameStyle(_:)</code>,这个方法里面改了userDefaults,让我们定义的flag加了1</p>
-<h2 id="UI测试-略"><a href="#UI测试-略" class="headerlink" title="UI测试(略)"></a>UI测试(略)</h2><p>目前没用到</p>
-<h2 id="性能测试"><a href="#性能测试" class="headerlink" title="性能测试"></a>性能测试</h2><p><a href="https://developer.apple.com/library/prerelease/content/documentation/DeveloperTools/Conceptual/testing_with_xcode/chapters/04-writing_tests.html#//apple_ref/doc/uid/TP40014132-CH4-SW8" target="_blank" rel="noopener">Apple文档</a>里说道: 性能测试中,把你要测试的代码写入那个block里面,它跑10次,然后收集平均运行时间以及标准差. 这些单独测量的平均值形成测试运行的值, 用来与基准比较评估是成功还是失败</p>
-<p>至于那个block(在swift里面是closure),就是 <code>measure()</code>.</p>
-<p>用HalfTunes工程,在HalfTunesFakeTests.swift里面加一条测试方法:</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test_StartDownload_Performance</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">let</span> track = <span class="type">Track</span>(</span><br><span class="line">    name: <span class="string">"Waterloo"</span>, </span><br><span class="line">    artist: <span class="string">"ABBA"</span>,</span><br><span class="line">    previewUrl: </span><br><span class="line">      <span class="string">"http://a821.phobos.apple.com/us/r30/Music/d7/ba/ce/mzm.vsyjlsff.aac.p.m4a"</span>)</span><br><span class="line"></span><br><span class="line">  measure &#123;</span><br><span class="line">    <span class="keyword">self</span>.sut.startDownload(track)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行,完成后点击<code>measure</code>边上的◇标志,去查看统计数据</p>
-<p><img src="https://koenig-media.raywenderlich.com/uploads/2019/02/PerformanceResult.png" alt="PerformanceResult"></p>
-<p>setBaseLine就是设置基准,基线的设置要基于当前设备的配置.</p>
-<h2 id="代码覆盖"><a href="#代码覆盖" class="headerlink" title="代码覆盖"></a>代码覆盖</h2><p>代码覆盖工具,检查你app的代码有多少是在你的测试中运行过的,这样你就能知道哪些代码还没有测试过.</p>
-<p>往上看,在工具栏里面点你的app(旁边就是运行的设备选择), <code>Edit scheme</code>,去<strong>Test</strong>里面把<strong>Code Coverage</strong>勾上:</p>
-<p><img src="https://koenig-media.raywenderlich.com/uploads/2019/02/CodeCoverageSwitch.png" alt></p>
-<p>这次我们执行全部测试用例(Command+U),执行完成后打开报告栏(Command+9),看到你最近一次的执行,选择 <strong>Coverage</strong>:</p>
-<p><img src="https://koenig-media.raywenderlich.com/uploads/2019/02/CoverageReport1.png" alt></p>
-<p>你还能点进去各个代码文件里面,红的就是没有覆盖到的代码,绿的就是执行过的代码</p>
-<p>是否要达成100%覆盖率,现在还有争议</p>
-<hr>
-<p>看完了记得去英文原始网站给原作者打个分</p>
-
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/08/26/iOSUnitTestTutorial/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -620,11 +452,19 @@
                 
               
 
-              <time title="创建时间：2019-08-23 21:50:52 / 修改时间：23:05:19" itemprop="dateCreated datePublished" datetime="2019-08-23T21:50:52+08:00">2019-08-23</time>
+              <time title="创建时间：2019-08-23 21:50:52" itemprop="dateCreated datePublished" datetime="2019-08-23T21:50:52+08:00">2019-08-23</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-08-28 22:33:35" itemprop="dateModified" datetime="2019-08-28T22:33:35+08:00">2019-08-28</time>
+              </span>
             
           
 
@@ -655,65 +495,15 @@
       
           <p>UI要求实现一个性别选择,很明显就是UISegementedControl,只是外观需要自己修改实现一下,第一反应就想着去使用UISegementedControl了(当然你也可以自定义View去实现)</p>
 <p>本文很浅薄地接涉及到了KVO ,KVC 等Runtime机制</p>
-<p><img src="/images/customsizeUISegmentedControl/genderSegmentControl.png" alt="xx"></p>
-<p>UI如上图所示,任务清单如下</p>
-<ol>
-<li>Segment<ol start="2">
-<li>文字 </li>
-<li>边框</li>
-<li>背景</li>
-<li>(选中和未选中两个状态)</li>
-</ol>
-</li>
-<li>Segment之间的间距</li>
-</ol>
-<h2 id="消除原生效果"><a href="#消除原生效果" class="headerlink" title="消除原生效果"></a>消除原生效果</h2><p>把蓝色前景和白色背景都改掉</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line">genderSegmentedControl.tintColor = .clear</span><br><span class="line">genderSegmentedControl.backgroundColor = .black</span><br></pre></td></tr></table></figure>
-
-<h2 id="Segment"><a href="#Segment" class="headerlink" title="Segment"></a>Segment</h2><h3 id="title"><a href="#title" class="headerlink" title="title"></a>title</h3><p>title自定义比较简单,查一下UISegementedControl的文档,调用接口就完事了</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="function"><span class="keyword">func</span> <span class="title">setTitleTextAttributes</span><span class="params">(<span class="number">_</span> attributes: [NSAttributedString.Key : <span class="keyword">Any</span>]?, <span class="keyword">for</span> state: UIControl.State)</span></span></span><br></pre></td></tr></table></figure>
-
-<h3 id="边框-amp-背景"><a href="#边框-amp-背景" class="headerlink" title="边框&amp;背景"></a>边框&amp;背景</h3><p>既然我们用的是<code>UISegementedControl</code>,盲猜它的<code>subviews</code>也是<code>UISegement</code>,可惜查<code>UIKit</code>里面并没有这个类,看来这是个私有类,不能用.(现在只是猜测subview是什么类,后文去验证)</p>
-<p>但是不管它是什么类,它都是<code>UIView</code>的子类就对了,<code>UIView</code>能设置边框<code>border</code>和背景<code>background</code>,那就把它的子类当成<code>UIView</code>用就完事了</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> segment <span class="keyword">in</span> <span class="keyword">self</span>.subviews &#123;</span><br><span class="line">    segment.layer.borderWidth = <span class="number">1</span></span><br><span class="line">    segment.layer.borderColor = <span class="type">UIColor</span>.white.cgColor</span><br><span class="line">    <span class="comment">// 这里是给UIview的layer底层添加了一层layer当做背景</span></span><br><span class="line">    segment.setDiagonalBackground(show: !segmentIsSelected)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>现在边框和背景都设置了,但是不能随着状态改变,后续需要绑定状态</p>
-<h3 id="间距"><a href="#间距" class="headerlink" title="间距"></a>间距</h3><p>查文档,UISegementedControl还是不能直接设置间距,只有一个设置分割图片的方法</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">setDividerImage</span><span class="params">(<span class="number">_</span> dividerImage: UIImage?, forLeftSegmentState leftState: UIControl.State, rightSegmentState rightState: UIControl.State, barMetrics: UIBarMetrics)</span></span></span><br></pre></td></tr></table></figure>
-
-<p>那就自己生成图片,设置好尺寸,实现间距自定义</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">fileprivate</span> <span class="class"><span class="keyword">extension</span> <span class="title">UIImage</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">func</span> <span class="title">render</span>(<span class="title">size</span>: <span class="title">CGSize</span>, <span class="title">_</span> <span class="title">draw</span>: () -&gt; <span class="title">Void</span>) -&gt; <span class="title">UIImage</span>? </span>&#123;</span><br><span class="line">        <span class="type">UIGraphicsBeginImageContext</span>(size)</span><br><span class="line">        <span class="keyword">defer</span> &#123; <span class="type">UIGraphicsEndImageContext</span>() &#125;</span><br><span class="line">        </span><br><span class="line">        draw()</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="type">UIGraphicsGetImageFromCurrentImageContext</span>()?</span><br><span class="line">            .withRenderingMode(.alwaysTemplate)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>依照api的功能,根据两边的不同状态设置不同的分割图片,这里全部设置为透明的图片</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> leftState <span class="keyword">in</span> [<span class="type">UIControl</span>.<span class="type">State</span>.normal,.selected] &#123;</span><br><span class="line">    <span class="keyword">for</span> rightState <span class="keyword">in</span> [<span class="type">UIControl</span>.<span class="type">State</span>.normal,.selected] &#123;</span><br><span class="line">        <span class="keyword">self</span>.setDividerImage(<span class="type">UIImage</span>.render(size: <span class="type">CGSize</span>(width: <span class="number">16</span>, height: <span class="number">24</span>), &#123;</span><br><span class="line">            <span class="type">UIColor</span>.clear.setFill()</span><br><span class="line">        &#125;), forLeftSegmentState: leftState, rightSegmentState: rightState, barMetrics: .<span class="keyword">default</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="添加观察"><a href="#添加观察" class="headerlink" title="添加观察"></a>添加观察</h2><p>做到这里,只是一个静态的选择控件,还需要根据选中的Segment去改变UI</p>
-<h3 id="初步设想"><a href="#初步设想" class="headerlink" title="初步设想"></a>初步设想</h3><h4 id="观察整体-UISegmentedControl-selectedSementIndex"><a href="#观察整体-UISegmentedControl-selectedSementIndex" class="headerlink" title="观察整体: UISegmentedControl.selectedSementIndex"></a>观察整体: UISegmentedControl.selectedSementIndex</h4><p>这个属性是可以直接访问到的,只要这个有变化,咱们就去重新设置subviews的外观</p>
-<p>既然有索引<code>index</code>,根据index去找到subviews中选中的Segment,重新设置外观就完成了</p>
-<p>(但是索引对应的UISegment和你直观的思想是冲突的,处理起来逻辑会很混乱)</p>
-<h3 id="后续的想法"><a href="#后续的想法" class="headerlink" title="后续的想法:"></a>后续的想法:</h3><h4 id="观察局部-Segment-isSelected"><a href="#观察局部-Segment-isSelected" class="headerlink" title="观察局部: Segment.isSelected"></a>观察局部: Segment.isSelected</h4><p>如果说每一个<code>Segment</code>本身都有一个属性<code>isSelected</code>,那直接监听此属性,让<code>Segment</code>自己改变外观就好了. 接下来就需要去验证我们的想法</p>
-<h4 id="UISegementedControl的subview是什么"><a href="#UISegementedControl的subview是什么" class="headerlink" title="UISegementedControl的subview是什么"></a>UISegementedControl的subview是什么</h4><p>新建一个playground,进行验证</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = <span class="type">UISegmentedControl</span>(items: [<span class="string">"a"</span>,<span class="string">"b"</span>])</span><br><span class="line">a.selectedSegmentIndex = <span class="number">1</span></span><br><span class="line"><span class="keyword">let</span> b = a.subviews.first!</span><br><span class="line"><span class="built_in">print</span>(b)</span><br><span class="line"><span class="comment">//输出如下</span></span><br><span class="line"><span class="comment">//&lt;UISegment: 0x7fd1ce4118f0; frame = (23 0; 22 29); opaque = NO; layer = &lt;CALayer: 0x600000b77680&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>确实是一个UISegment,也确实是一个私有类,文档没有给出此类的任何接口,无法直接调用</p>
-<h4 id="Segment-是否有-isSelected-属性"><a href="#Segment-是否有-isSelected-属性" class="headerlink" title="Segment 是否有 isSelected 属性"></a>Segment 是否有 isSelected 属性</h4><p>UISegment 是私有类,没有文档可看,只能借助runtime机制去看一下它有什么属性<br><a href="http://allluckly.cn/%E6%8A%95%E7%A8%BF/tuogao01" target="_blank" rel="noopener">成员变量与属性的区别</a></p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> a.subviews &#123; <span class="comment">// a 是 UISegmentedControl</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"------ivar-----"</span>)</span><br><span class="line">    <span class="keyword">var</span> pcount:<span class="type">UInt32</span> = <span class="number">0</span> <span class="comment">// 计数用</span></span><br><span class="line">    <span class="keyword">var</span> prs = class_copyPropertyList(x.classForCoder, &amp;pcount) <span class="comment">//拷贝类的属性列表</span></span><br><span class="line">    <span class="comment">// 遍历列表,输出</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..&lt;<span class="type">Int</span>(pcount) &#123;</span><br><span class="line">        <span class="keyword">let</span> ivar = <span class="type">String</span>(cString: ivar_getName(prs![i])!, encoding: .utf8)</span><br><span class="line">        <span class="keyword">let</span> property = <span class="type">String</span>(cString: property_getName(prs![i]), encoding: .utf8)</span><br><span class="line">        <span class="built_in">print</span>(ivar! + <span class="string">"   "</span> + property!)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出如下</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">------ivar-----</span></span><br><span class="line"><span class="comment">T@"NSArray",C,N,S_setInfoConstraints:,V_infoConstraints   _infoConstraints</span></span><br><span class="line"><span class="comment">TB,GisSelected   selected</span></span><br><span class="line"><span class="comment">TB,GisMomentary   momentary</span></span><br><span class="line"><span class="comment">Ti   controlSize</span></span><br><span class="line"><span class="comment">T@"NSString",C,N   badgeValue</span></span><br><span class="line"><span class="comment">T@"UIView",R   badgeView</span></span><br><span class="line"><span class="comment">Td,N,V_requestedScaleFactor   requestedScaleFactor</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<p><code>selected</code>就是我们需要的属性,打印出来看看是不是布尔型(其实是Int)</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> a.subviews &#123;</span><br><span class="line">    <span class="keyword">let</span> n = x.value(forKey: <span class="string">"isSelected"</span>)!</span><br><span class="line">    <span class="built_in">print</span>(n)</span><br><span class="line">    <span class="built_in">print</span>(n <span class="keyword">is</span> <span class="type">Int</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1</span></span><br><span class="line"><span class="comment">true</span></span><br><span class="line"><span class="comment">0</span></span><br><span class="line"><span class="comment">true</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<p>由此可知,选中为1,未选中为0</p>
-<h4 id="添加监听"><a href="#添加监听" class="headerlink" title="添加监听"></a>添加监听</h4><p>再新建一个playground,做一个小demo,测试一下</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">//: A UIKit based Playground for presenting user interface</span></span><br><span class="line">  </span><br><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"><span class="keyword">import</span> PlaygroundSupport</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyViewController</span> : <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">loadView</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">let</span> view = <span class="type">UIView</span>()</span><br><span class="line">        <span class="keyword">self</span>.view = view</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> sc = <span class="type">UISegmentedControl</span>(items: [<span class="string">"first"</span>,<span class="string">"second"</span>,<span class="string">"third"</span>])</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">        view.backgroundColor = .black</span><br><span class="line">        </span><br><span class="line">        view.addSubview(sc)</span><br><span class="line">        sc.frame.origin = <span class="type">CGPoint</span>(x: <span class="number">100</span>, y: <span class="number">100</span>)</span><br><span class="line">        <span class="comment">// 监听UISegementedControl</span></span><br><span class="line">        sc.addObserver(<span class="keyword">self</span>, forKeyPath: <span class="string">"selectedSegmentIndex"</span>, options: .new, context: <span class="literal">nil</span>)</span><br><span class="line">        <span class="comment">// 监听 UISegement</span></span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> sc.subviews &#123;</span><br><span class="line">            x.addObserver(<span class="keyword">self</span>, forKeyPath: <span class="string">"selected"</span>, options: .new, context: <span class="literal">nil</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">observeValue</span><span class="params">(forKeyPath keyPath: String?, of object: <span class="keyword">Any</span>?, change: [NSKeyValueChangeKey : <span class="keyword">Any</span>]?, context: UnsafeMutableRawPointer?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">let</span> value = change![.newKey]! <span class="keyword">as</span>! <span class="type">Int</span></span><br><span class="line">        <span class="comment">// 对于UISegmentedControl,当选中的Segment变化时,输出index</span></span><br><span class="line">        <span class="keyword">if</span> keyPath == <span class="string">"selectedSegmentIndex"</span> &#123;</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"current selected:\(value)"</span>)</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> keyPath == <span class="string">"selected"</span>&#123; <span class="comment">//对于UISegement,自身选中时背景变白,未选中时变黄,由于未设置初始值,那么初始是蓝色/透明背景</span></span><br><span class="line">            <span class="keyword">if</span> value == <span class="number">1</span> &#123;</span><br><span class="line">                (object <span class="keyword">as</span>! <span class="type">UIView</span>).backgroundColor = .white <span class="comment">// sc的tintColor忘记改了,默认为前景为蓝色</span></span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                (object <span class="keyword">as</span>! <span class="type">UIView</span>).backgroundColor = .yellow</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Present the view controller in the Live View window</span></span><br><span class="line"><span class="type">PlaygroundPage</span>.current.liveView = <span class="type">MyViewController</span>()</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/customsizeUISegmentedControl/playground.png" alt="cut"></p>
-<h2 id="封装控件"><a href="#封装控件" class="headerlink" title="封装控件"></a>封装控件</h2><p>既然功能上可行,那就封装好一个自定义UISegementedControl,方便使用,其实仅仅是对外观的修改,功能没有任何变化</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TaoSegmentedControl</span>: <span class="title">UISegmentedControl</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">init</span>() &#123;</span><br><span class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>(frame: .zero)</span><br><span class="line">        config()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">override</span> <span class="keyword">init</span>(frame: <span class="type">CGRect</span>) &#123;</span><br><span class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>(frame: frame)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="keyword">init</span>(items:[<span class="type">Any</span>]?) &#123;</span><br><span class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>(items: items)</span><br><span class="line">        config()</span><br><span class="line">        <span class="keyword">for</span> segment <span class="keyword">in</span> subviews &#123;</span><br><span class="line">            segment.addObserver(<span class="keyword">self</span>, forKeyPath: <span class="string">"selected"</span>, options: [.new,.initial], context: <span class="literal">nil</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">required</span> <span class="keyword">init</span>?(coder aDecoder: <span class="type">NSCoder</span>) &#123;</span><br><span class="line">        <span class="built_in">fatalError</span>(<span class="string">"init(coder:) has not been implemented"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">config</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">self</span>.tintColor = .clear</span><br><span class="line">        <span class="keyword">self</span>.backgroundColor = .black</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">self</span>.setTitleTextAttributes([.font:<span class="type">UIFont</span>.systemFont(ofSize: <span class="number">12</span>, weight: .semibold)], <span class="keyword">for</span>: .normal)</span><br><span class="line">        <span class="keyword">self</span>.setTitleTextAttributes([.font:<span class="type">UIFont</span>.systemFont(ofSize: <span class="number">12</span>, weight: .semibold)], <span class="keyword">for</span>: .selected)</span><br><span class="line">        <span class="keyword">self</span>.setTitleTextAttributes([.foregroundColor:<span class="type">UIColor</span>.gray], <span class="keyword">for</span>: .normal)</span><br><span class="line">        <span class="keyword">self</span>.setTitleTextAttributes([.foregroundColor:<span class="type">UIColor</span>.white], <span class="keyword">for</span>: .selected)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> leftState <span class="keyword">in</span> [<span class="type">UIControl</span>.<span class="type">State</span>.normal,.selected] &#123;</span><br><span class="line">            <span class="keyword">for</span> rightState <span class="keyword">in</span> [<span class="type">UIControl</span>.<span class="type">State</span>.normal,.selected] &#123;</span><br><span class="line">                <span class="keyword">self</span>.setDividerImage(<span class="type">UIImage</span>.render(size: <span class="type">CGSize</span>(width: <span class="number">16</span>, height: <span class="number">24</span>), &#123;</span><br><span class="line">                    <span class="type">UIColor</span>.clear.setFill()</span><br><span class="line">                &#125;), forLeftSegmentState: leftState, rightSegmentState: rightState, barMetrics: .<span class="keyword">default</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">observeValue</span><span class="params">(forKeyPath keyPath: String?, of object: <span class="keyword">Any</span>?, change: [NSKeyValueChangeKey : <span class="keyword">Any</span>]?, context: UnsafeMutableRawPointer?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">let</span> segment = object <span class="keyword">as</span>! <span class="type">UIView</span></span><br><span class="line">        <span class="keyword">let</span> isSelected = (segment.value(forKey: <span class="string">"isSelected"</span>) <span class="keyword">as</span>! <span class="type">Int</span>) == <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        segment.layer.borderWidth = <span class="number">1</span></span><br><span class="line">        segment.layer.borderColor = isSelected ? <span class="type">UIColor</span>.white.cgColor : <span class="type">UIColor</span>.gray.cgColor</span><br><span class="line">        segment.backgroundColor = isSelected ? <span class="type">UIColor</span>.black: <span class="type">UIColor</span>.darkGray</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">deinit</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> segment <span class="keyword">in</span> subviews &#123;</span><br><span class="line">            segment.removeObserver(<span class="keyword">self</span>, forKeyPath: <span class="string">"isSelected"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fileprivate</span> <span class="class"><span class="keyword">extension</span> <span class="title">UIImage</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">func</span> <span class="title">render</span>(<span class="title">size</span>: <span class="title">CGSize</span>, <span class="title">_</span> <span class="title">draw</span>: () -&gt; <span class="title">Void</span>) -&gt; <span class="title">UIImage</span>? </span>&#123;</span><br><span class="line">        <span class="type">UIGraphicsBeginImageContext</span>(size)</span><br><span class="line">        <span class="keyword">defer</span> &#123; <span class="type">UIGraphicsEndImageContext</span>() &#125;</span><br><span class="line">        </span><br><span class="line">        draw()</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="type">UIGraphicsGetImageFromCurrentImageContext</span>()?</span><br><span class="line">            .withRenderingMode(.alwaysTemplate)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>和UISegmentedControl的调用别无二致,最后的效果如下</p>
-<p><img src="/images/customsizeUISegmentedControl/result.png" alt="res"></p>
-<p>仅仅是一个简单的控件,没有考虑到后续<code>insertSegment</code>的情况,本文中也没有用条纹背景,用灰色背景替代,有兴趣的小伙伴可以自己去实现完善.</p>
-
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/08/23/customsizeUISegmentedControl/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -779,7 +569,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-23 23:05:17" itemprop="dateModified" datetime="2019-08-23T23:05:17+08:00">2019-08-23</time>
+                <time title="修改时间：2019-08-28 22:33:22" itemprop="dateModified" datetime="2019-08-28T22:33:22+08:00">2019-08-28</time>
               </span>
             
           
@@ -811,81 +601,15 @@
       
           <p>跟着教程搭起来一个简单的博客,顺便熟悉一下新的粉粉嫩嫩的电脑,做点什么东西.</p>
 <p>第一篇进行所谓的技术总结(估计搭博客的教程用一次就再也用不到了),旧教程总有过时的部分,希望这篇能给其他人带来点作用.(果然,贴了少女贴纸又加膜的打字手感一点都不好,还是撕掉打字爽)</p>
-<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><ol>
-<li><p>去 <a href="github.com">GitHub</a> 注册一个账号(默认大家都有了)</p>
-</li>
-<li><p>然后去新建一个仓库<br><img src="/images/githubpageExperience/newRepoCut.png" alt="新建仓库的截图"></p>
-</li>
-<li><p>仓库名字是 <em>你的GitHub账户.github.io</em> ,其他全部默认,创建</p>
-<p><img src="/images/githubpageExperience/newgithubpage.png" alt="page截图"></p>
-</li>
-<li><p>然后去本仓库的设置页<code>settings</code></p>
-<p><img src="/images/githubpageExperience/settingscut.png" alt="setting"></p>
-</li>
-<li><p>往下拉,找到<em>GitHubPage</em></p>
-<p><img src="/images/githubpageExperience/GitHubpage.png" alt="githubpageSetting"></p>
-<p>(设置完成了的话应该是上图所示的样子)</p>
-<p>第一次建时去选择一个主题 <em>Choose a theme</em> (选默认的就行,反正后面也要改)</p>
-</li>
-<li><p>选择完成后,开始你的第一次commit(随便输入,诸如init,first commit之类的)</p>
-</li>
-<li><p>建站结束,访问 <a href="happts.github.com">你的id.github.com</a> 就能看到了.</p>
-</li>
-<li><p>第一篇hello world 等着你.</p>
-</li>
-</ol>
-<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><p>假设你也用的是一台全新的macOS电脑,咱们从头开始.</p>
-<h3 id="Terminal-设置"><a href="#Terminal-设置" class="headerlink" title="Terminal 设置"></a>Terminal 设置</h3><p>总得要从本地管理你的博客,修改的差不多了再上传到GitHub.先把工具整顺手了咱们再开始.</p>
-<ol>
-<li>去App Store安装 Xcode ,打开,等待安装成功 (如果你不需要Xcode可以跳过)</li>
-<li>反正我装了,跳过Xcode会缺<strong>Command Line Tools</strong>,里面包含Git等命令行工具,不保证下面的步骤有没有效</li>
-<li>打开 Terminal (终端), 弹出小黑框</li>
-</ol>
-<h4 id="安装homebrew-点我进官网"><a href="#安装homebrew-点我进官网" class="headerlink" title="安装homebrew(点我进官网)"></a>安装<a href="https://brew.sh" target="_blank" rel="noopener">homebrew(点我进官网)</a></h4><p>这是个包管理工具,似乎是能补全⤴️没装Xcode缺失的东西</p>
-<ol>
-<li>在Terminal中输入</li>
-</ol>
-<figure class="highlight zsh"><table><tr><td class="code"><pre><span class="line">/usr/bin/ruby -e <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></span><br></pre></td></tr></table></figure>
-
-<p>   等待安装完成</p>
-<ol start="2">
-<li><p>安装完成后在Terminal中输入 <code>git --version</code> </p>
-<p>看看有没有效果,如果有</p>
-<p> <code>git version 2.20.1 (Apple Git-117)</code> </p>
-<p>类似这样的文字输出到屏幕上那就有Git了</p>
-</li>
-<li><p>话说你用macOS还不下载一个Xcode??? ,就不该考虑没有Xcode的情况(溜了溜了)</p>
-</li>
-</ol>
-<h4 id="Terminal切换zsh"><a href="#Terminal切换zsh" class="headerlink" title="Terminal切换zsh"></a>Terminal切换zsh</h4><p>zsh + <a href="https://ohmyz.sh/" target="_blank" rel="noopener">oh my zsh</a> 会比 默认的 bash 好用点,你有自己的习惯这部分可以跳过</p>
-<ol>
-<li><p>依旧在Terminal中,输入 <code>chsh -s /usr/local/bin/zsh</code> 切换到zsh</p>
-</li>
-<li><p>下载oh my zsh 输入 </p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>等待安装完成后关了Terminal再重进来, 左边应该会出现一个小箭头,这就切换成功了</li>
-</ol>
-<h3 id="GitHub-Desktop-不使用主题配置网站"><a href="#GitHub-Desktop-不使用主题配置网站" class="headerlink" title="GitHub Desktop  +  不使用主题配置网站"></a>GitHub Desktop  +  不使用主题配置网站</h3><p>下载一个<a href="https://desktop.github.com/" target="_blank" rel="noopener">GitHub Desktop</a> ,管理起来可能会方便一点</p>
-<p>下载安装,登录,然后把自己的博客仓库clone到本地(自己选路径)</p>
-<p><img src="/images/githubpageExperience/cloneRepo.png" alt="clone"></p>
-<p><img src="/images/githubpageExperience/selRepo.png" alt="selectCloneRep"></p>
-<ol>
-<li><p>去finder里面康康这个文件夹,这就是你的网站啦.</p>
-<p><img src="/images/githubpageExperience/pageFolder.png" alt="page"></p>
-</li>
-<li><p><code>_config.yml</code> 是配置文件,具体配置功能自己去找</p>
-</li>
-<li><p><code>index.md</code> 或是 <code>index.html</code> 就是你的主页了, <a href="happts.github.io">happts.github.io</a> 访问你的网址首先出现的就是<code>index.html</code></p>
-</li>
-<li><p>其余的网页或者资源就自己放吧, 记得使用相对路径去访问资源就好啦</p>
-<p>比如我在第一篇文章中添加的一张sans  <code>![sans](images/sans.jpg)</code> </p>
-</li>
-</ol>
-
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/08/22/experienceInBuildingMyBlog/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -951,7 +675,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-22 01:33:45" itemprop="dateModified" datetime="2019-08-22T01:33:45+08:00">2019-08-22</time>
+                <time title="修改时间：2019-08-28 22:33:16" itemprop="dateModified" datetime="2019-08-28T22:33:16+08:00">2019-08-28</time>
               </span>
             
           
@@ -982,20 +706,15 @@
 
       
           <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-<p><img src="/images/sans.jpg" alt="sans"></p>
-
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/08/21/hello-world/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>

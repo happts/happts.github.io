@@ -69,7 +69,7 @@
 <meta property="og:image" content="http://happts.github.io/images/githubpageExperience/cloneRepo.png">
 <meta property="og:image" content="http://happts.github.io/images/githubpageExperience/selRepo.png">
 <meta property="og:image" content="http://happts.github.io/images/githubpageExperience/pageFolder.png">
-<meta property="og:updated_time" content="2019-08-28T14:33:22.829Z">
+<meta property="og:updated_time" content="2019-08-29T12:17:44.267Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用GitHub page搭建博客的经历">
 <meta name="twitter:description" content="跟着教程搭起来一个简单的博客,顺便熟悉一下新的粉粉嫩嫩的电脑,做点什么东西. 第一篇进行所谓的技术总结(估计搭博客的教程用一次就再也用不到了),旧教程总有过时的部分,希望这篇能给其他人带来点作用.(果然,贴了少女贴纸又加膜的打字手感一点都不好,还是撕掉打字爽)">
@@ -259,26 +259,12 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-28 22:33:22" itemprop="dateModified" datetime="2019-08-28T22:33:22+08:00">2019-08-28</time>
+                <time title="修改时间：2019-08-29 20:17:44" itemprop="dateModified" datetime="2019-08-29T20:17:44+08:00">2019-08-29</time>
               </span>
             
           
 
           
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/08/22/experienceInBuildingMyBlog/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/08/22/experienceInBuildingMyBlog/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
 
         </div>
       </header>
@@ -350,7 +336,7 @@
 <ol start="3">
 <li>等待安装完成后关了Terminal再重进来, 左边应该会出现一个小箭头,这就切换成功了</li>
 </ol>
-<h3 id="GitHub-Desktop-不使用主题配置网站"><a href="#GitHub-Desktop-不使用主题配置网站" class="headerlink" title="GitHub Desktop  +  不使用主题配置网站"></a>GitHub Desktop  +  不使用主题配置网站</h3><p>下载一个<a href="https://desktop.github.com/" target="_blank" rel="noopener">GitHub Desktop</a> ,管理起来可能会方便一点</p>
+<h2 id="GitHub-Desktop-不使用主题配置网站"><a href="#GitHub-Desktop-不使用主题配置网站" class="headerlink" title="GitHub Desktop  +  不使用主题配置网站"></a>GitHub Desktop  +  不使用主题配置网站</h2><p>下载一个<a href="https://desktop.github.com/" target="_blank" rel="noopener">GitHub Desktop</a> ,管理起来可能会方便一点</p>
 <p>下载安装,登录,然后把自己的博客仓库clone到本地(自己选路径)</p>
 <p><img src="/images/githubpageExperience/cloneRepo.png" alt="clone"></p>
 <p><img src="/images/githubpageExperience/selRepo.png" alt="selectCloneRep"></p>
@@ -364,9 +350,10 @@
 </li>
 <li><p>其余的网页或者资源就自己放吧, 记得使用相对路径去访问资源就好啦</p>
 <p>比如我在第一篇文章中添加的一张sans  <code>![sans](images/sans.jpg)</code> </p>
+<p>(无论加什么东西都记得放到一个文件夹里)</p>
 </li>
 </ol>
-
+<h2 id="使用Hexo-Next主题模板"><a href="#使用Hexo-Next主题模板" class="headerlink" title="使用Hexo + Next主题模板"></a>使用Hexo + Next主题模板</h2><h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><h3 id="下载Next模板"><a href="#下载Next模板" class="headerlink" title="下载Next模板"></a>下载Next模板</h3><h2 id="自行优化"><a href="#自行优化" class="headerlink" title="自行优化"></a>自行优化</h2>
     </div>
 
     
@@ -422,47 +409,7 @@
           </div>
           
     
-      <div class="tabs tabs-comment">
-        <ul class="nav-tabs">
-          
-            <li class="tab"><a href="#comment-gitalk">gitalk</a></li>
-          
-            <li class="tab"><a href="#comment-valine">valine</a></li>
-          
-        </ul>
-        <div class="tab-content">
-          
-            <div class="tab-pane gitalk" id="comment-gitalk">
-              <div class="comments" id="gitalk-container"></div>
-            </div>
-          
-            <div class="tab-pane valine" id="comment-valine">
-              <div class="comments" id="comments"></div>
-            </div>
-          
-        </div>
-      </div>
-      <script>
-        window.addEventListener('tabs:register', () => {
-          let activeClass = '';
-          
-            activeClass = localStorage.getItem('comments_active') || activeClass;
-          
-          if (activeClass) {
-            let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-            if (activeTab) {
-              activeTab.click();
-            }
-          }
-        });
-        
-        window.addEventListener('tabs:click', event => {
-          let commentClass = event.target.classList[1];
-          localStorage.setItem('comments_active', commentClass);
-        });
-        
-      </script>
-    
+    <div class="comments" id="gitalk-container"></div>
   
 
         </div>
@@ -496,7 +443,7 @@
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc">
-            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#快速开始"><span class="nav-number">1.</span> <span class="nav-text">快速开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前期准备"><span class="nav-number">2.</span> <span class="nav-text">前期准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Terminal-设置"><span class="nav-number">2.1.</span> <span class="nav-text">Terminal 设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装homebrew-点我进官网"><span class="nav-number">2.1.1.</span> <span class="nav-text">安装homebrew(点我进官网)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Terminal切换zsh"><span class="nav-number">2.1.2.</span> <span class="nav-text">Terminal切换zsh</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub-Desktop-不使用主题配置网站"><span class="nav-number">2.2.</span> <span class="nav-text">GitHub Desktop  +  不使用主题配置网站</span></a></li></ol></li></ol></div>
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#快速开始"><span class="nav-number">1.</span> <span class="nav-text">快速开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前期准备"><span class="nav-number">2.</span> <span class="nav-text">前期准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Terminal-设置"><span class="nav-number">2.1.</span> <span class="nav-text">Terminal 设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装homebrew-点我进官网"><span class="nav-number">2.1.1.</span> <span class="nav-text">安装homebrew(点我进官网)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Terminal切换zsh"><span class="nav-number">2.1.2.</span> <span class="nav-text">Terminal切换zsh</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub-Desktop-不使用主题配置网站"><span class="nav-number">3.</span> <span class="nav-text">GitHub Desktop  +  不使用主题配置网站</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Hexo-Next主题模板"><span class="nav-number">4.</span> <span class="nav-text">使用Hexo + Next主题模板</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Hexo"><span class="nav-number">4.1.</span> <span class="nav-text">安装Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载Next模板"><span class="nav-number">4.2.</span> <span class="nav-text">下载Next模板</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自行优化"><span class="nav-number">5.</span> <span class="nav-text">自行优化</span></a></li></ol></div>
           </div>
         
       </div>
@@ -677,31 +624,6 @@
     });
     gitalk.render('gitalk-container');
   }, window.Gitalk);
-</script>
-
-
-<script>
-NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-  var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail,link';
-  guest = guest.split(',').filter(item => {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#comments',
-    verify: false,
-    notify: false,
-    appId: 'AGYWgNvfRmveIWkTPMcCP9I7-MdYXbMMI',
-    appKey: 'XMWtFVafQaeqTzKEtGvSrheG',
-    placeholder: 'Just go go',
-    avatar: '/images/avatar.JPG',
-    meta: guest,
-    pageSize: '10' || 10,
-    visitor: false,
-    lang: 'en' || 'zh-cn',
-    path: location.pathname
-  });
-}, window.Valine);
 </script>
 
 </body>

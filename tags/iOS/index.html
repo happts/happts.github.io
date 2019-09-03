@@ -527,30 +527,5 @@
 
   
 
-
-<script>
-NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-  var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail,link';
-  guest = guest.split(',').filter(item => {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#comments',
-    verify: false,
-    notify: false,
-    appId: 'AGYWgNvfRmveIWkTPMcCP9I7-MdYXbMMI',
-    appKey: 'XMWtFVafQaeqTzKEtGvSrheG',
-    placeholder: 'Just go go',
-    avatar: '/images/avatar.JPG',
-    meta: guest,
-    pageSize: '10' || 10,
-    visitor: false,
-    lang: 'en' || 'zh-cn',
-    path: location.pathname
-  });
-}, window.Valine);
-</script>
-
 </body>
 </html>

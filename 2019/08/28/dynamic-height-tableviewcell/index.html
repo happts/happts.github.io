@@ -54,18 +54,20 @@
   };
 </script>
 
-  <meta name="description" content="UITableviewCell 高度自适应, 我们最熟悉的就是QQ空间的说说动态和微信朋友圈了. 之前自己网上找的一些教程,要么就是用UILabel或者UITextView作为例子, 要么就是计算高度了. 可是正如我所提到的说说和微信朋友圈, 那一个Cell的内容都是不固定的, 好几条评论都是多出来的view, 教程不适用,决定自己弄.">
-<meta name="keywords" content="Swift,iOS">
+  <meta name="description" content="UITableviewCell 高度自适应, 我们最熟悉的就是QQ空间的说说动态和微信朋友圈了. 之前自己网上找的一些教程,要么就是用UILabel或者UITextView作为例子, 要么就是计算高度了. 可是正如我所提到的说说和微信朋友圈, 那一个Cell的内容都是不固定的, 好几条评论都是多出来的view, 教程不适用,决定自己弄. 预备内容: Cocoapods, SnapKit , aut">
+<meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UITableviewCell 自适应高度的一种实现方法">
 <meta property="og:url" content="http://happts.github.io/2019/08/28/dynamic-height-tableviewcell/index.html">
 <meta property="og:site_name" content="happt&#39;s blog">
-<meta property="og:description" content="UITableviewCell 高度自适应, 我们最熟悉的就是QQ空间的说说动态和微信朋友圈了. 之前自己网上找的一些教程,要么就是用UILabel或者UITextView作为例子, 要么就是计算高度了. 可是正如我所提到的说说和微信朋友圈, 那一个Cell的内容都是不固定的, 好几条评论都是多出来的view, 教程不适用,决定自己弄.">
+<meta property="og:description" content="UITableviewCell 高度自适应, 我们最熟悉的就是QQ空间的说说动态和微信朋友圈了. 之前自己网上找的一些教程,要么就是用UILabel或者UITextView作为例子, 要么就是计算高度了. 可是正如我所提到的说说和微信朋友圈, 那一个Cell的内容都是不固定的, 好几条评论都是多出来的view, 教程不适用,决定自己弄. 预备内容: Cocoapods, SnapKit , aut">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-28T14:33:27.334Z">
+<meta property="og:image" content="http://happts.github.io/images/dynamicHeightTableviewcell/dynamicCellShot.png">
+<meta property="og:updated_time" content="2019-09-03T13:41:21.732Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UITableviewCell 自适应高度的一种实现方法">
-<meta name="twitter:description" content="UITableviewCell 高度自适应, 我们最熟悉的就是QQ空间的说说动态和微信朋友圈了. 之前自己网上找的一些教程,要么就是用UILabel或者UITextView作为例子, 要么就是计算高度了. 可是正如我所提到的说说和微信朋友圈, 那一个Cell的内容都是不固定的, 好几条评论都是多出来的view, 教程不适用,决定自己弄.">
+<meta name="twitter:description" content="UITableviewCell 高度自适应, 我们最熟悉的就是QQ空间的说说动态和微信朋友圈了. 之前自己网上找的一些教程,要么就是用UILabel或者UITextView作为例子, 要么就是计算高度了. 可是正如我所提到的说说和微信朋友圈, 那一个Cell的内容都是不固定的, 好几条评论都是多出来的view, 教程不适用,决定自己弄. 预备内容: Cocoapods, SnapKit , aut">
+<meta name="twitter:image" content="http://happts.github.io/images/dynamicHeightTableviewcell/dynamicCellShot.png">
   <link rel="canonical" href="http://happts.github.io/2019/08/28/dynamic-height-tableviewcell/">
 
 
@@ -240,29 +242,23 @@
                 
               
 
-              <time title="创建时间：2019-08-28 21:24:09 / 修改时间：22:33:27" itemprop="dateCreated datePublished" datetime="2019-08-28T21:24:09+08:00">2019-08-28</time>
+              <time title="创建时间：2019-08-28 21:24:09" itemprop="dateCreated datePublished" datetime="2019-08-28T21:24:09+08:00">2019-08-28</time>
             </span>
           
             
 
             
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-03 21:41:21" itemprop="dateModified" datetime="2019-09-03T21:41:21+08:00">2019-09-03</time>
+              </span>
+            
           
 
           
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/08/28/dynamic-height-tableviewcell/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/08/28/dynamic-height-tableviewcell/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
 
         </div>
       </header>
@@ -274,7 +270,41 @@
 
       
         <p>UITableviewCell 高度自适应, 我们最熟悉的就是QQ空间的说说动态和微信朋友圈了. 之前自己网上找的一些教程,要么就是用<code>UILabel</code>或者<code>UITextView</code>作为例子, 要么就是计算高度了. 可是正如我所提到的说说和微信朋友圈, 那一个<code>Cell</code>的内容都是不固定的, 好几条评论都是多出来的<code>view</code>, 教程不适用,决定自己弄.</p>
+<p>预备内容: Cocoapods, SnapKit , autolayout </p>
 <a id="more"></a>
+<h2 id="UITableView"><a href="#UITableView" class="headerlink" title="UITableView"></a>UITableView</h2><p>一般来说,Cell的高度通过<code>tableview</code>的<code>delegate</code>中如下的方法设置</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(UITableView, heightForRowAt: IndexPath)</span></span> -&gt; <span class="type">CGFloat</span></span><br></pre></td></tr></table></figure>
+
+<p>如果要自适应高度,就不要实现这个方法了,否则<code>Cell</code>的高度就依照此方法返回的高度了</p>
+<p><code>UITableView</code>在<code>ViewController</code>中的设置如下:</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">self</span>.tableView.delegate = <span class="keyword">self</span></span><br><span class="line"><span class="keyword">self</span>.tableView.dataSource = <span class="keyword">self</span></span><br><span class="line"><span class="keyword">self</span>.tableView.rowHeight = <span class="type">UITableView</span>.automaticDimension</span><br><span class="line"><span class="keyword">self</span>.tableView.autoresizesSubviews = <span class="literal">false</span></span><br><span class="line"><span class="keyword">self</span>.tableView.register(<span class="type">MyCell</span>.<span class="keyword">self</span>, forCellReuseIdentifier: <span class="type">MyCell</span>.reuseID)</span><br></pre></td></tr></table></figure>
+
+<p>重点:</p>
+<ol>
+<li>高度自适应: <code>tableView.rowHeight = UITableView.automaticDimension</code> </li>
+<li>取消改变子视图大小: <code>self.tableView.autoresizesSubviews = false</code></li>
+<li><code>delegate</code>不去实现 <code>func tableView(UITableView, heightForRowAt: IndexPath) -&gt; CGFloat</code></li>
+</ol>
+<h2 id="自定义Cell-StackView-SnapKit-纯代码版本"><a href="#自定义Cell-StackView-SnapKit-纯代码版本" class="headerlink" title="自定义Cell: StackView + SnapKit 纯代码版本"></a>自定义Cell: StackView + SnapKit 纯代码版本</h2><p>在<code>tableView</code>里注册的<code>Cell</code>是自己定义的:</p>
+<p>在一个<code>UITableViewCell</code>里,子视图都放在<code>contentView</code>里,初始化Cell时,尺寸未定,通过使用设定好约束<code>Stackview</code>可以实现动态调整大小:</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="keyword">init</span>(style: <span class="type">UITableViewCell</span>.<span class="type">CellStyle</span>, reuseIdentifier: <span class="type">String?</span>) &#123;</span><br><span class="line">    <span class="keyword">super</span>.<span class="keyword">init</span>(style:style, reuseIdentifier: reuseIdentifier)</span><br><span class="line">    contentView.addSubview(stackview)</span><br><span class="line">    stackview.snp.makeConstraints &#123; (maker) <span class="keyword">in</span></span><br><span class="line">        maker.bottom.top.leading.trailing.equalToSuperview()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样定义后,一个Cell如果是添加多条评论(subview),在初始化时<code>stackView.addArrangedSubview()</code>即可.</p>
+<p>在<code>tableview.dataSource</code>中这样实现方法:</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> cell = tableView.dequeueReusableCell(withIdentifier: <span class="type">MyCell</span>.reuseID, <span class="keyword">for</span>: indexPath) <span class="keyword">as</span>! <span class="type">MyCell</span></span><br><span class="line">    cell.stackview.subviews.forEach&#123;$<span class="number">0</span>.removeFromSuperview()&#125;</span><br><span class="line">    data[indexPath.row].comments.forEach&#123; <span class="number">_</span> <span class="keyword">in</span> cell.stackview.addArrangedSubview(a.initComment(text: <span class="string">"testtest"</span>))&#125;</span><br><span class="line">    <span class="keyword">return</span> cell</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>从复用池中取出cell</li>
+<li>清空一下stackview,否则里面会有上次使用时残留的view</li>
+<li>向stacview中添加subview (自己定义的一个生成view的方法)</li>
+</ol>
+<p>生成评论View的代码如下:</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">initComment</span><span class="params">(text:String)</span></span> -&gt; <span class="type">UIView</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> view = <span class="type">UIView</span>(frame: .zero)</span><br><span class="line">        view.backgroundColor = .blue</span><br><span class="line">        <span class="keyword">let</span> label = <span class="type">UILabel</span>()</span><br><span class="line">        label.text = text</span><br><span class="line">        view.addSubview(label)</span><br><span class="line">        </span><br><span class="line">        label.snp.makeConstraints &#123; (maker) <span class="keyword">in</span></span><br><span class="line">            maker.center.equalToSuperview()</span><br><span class="line">        &#125;</span><br><span class="line">        view.snp.makeConstraints &#123; (maker) <span class="keyword">in</span></span><br><span class="line">            maker.size.equalTo(<span class="type">CGSize</span>(width: <span class="type">UIScreen</span>.main.bounds.width, height: <span class="number">40</span>))</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> view</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为此view是放到stackview里面的,所以不必设置frame,需要明确的size自己添加好约束,其余的让stackview自适应就好</p>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p><img src="/images/dynamicHeightTableviewcell/dynamicCellShot.png" alt="截图"></p>
+<p>ViewController代码如下:</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> data = [ <span class="type">CellInfo</span>(title: <span class="string">"第一条"</span>, comments: []),</span><br><span class="line">                 <span class="type">CellInfo</span>(title: <span class="string">"第二条"</span>, comments: [<span class="string">"评论1"</span>,<span class="string">"评论2"</span>]),</span><br><span class="line">                 <span class="type">CellInfo</span>(title: <span class="string">"第三条"</span>, comments: [<span class="string">"onew"</span>,<span class="string">"asdf"</span>,<span class="string">"asdfasdfasd"</span>])</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> tableView: <span class="type">UITableView!</span> &#123;</span><br><span class="line">        <span class="keyword">didSet</span>&#123;</span><br><span class="line">            <span class="keyword">self</span>.tableView.delegate = <span class="keyword">self</span></span><br><span class="line">            <span class="keyword">self</span>.tableView.dataSource = <span class="keyword">self</span></span><br><span class="line">            <span class="keyword">self</span>.tableView.rowHeight = <span class="type">UITableView</span>.automaticDimension</span><br><span class="line">            <span class="keyword">self</span>.tableView.autoresizesSubviews = <span class="literal">false</span></span><br><span class="line">            <span class="keyword">self</span>.tableView.register(<span class="type">MyCell</span>.<span class="keyword">self</span>, forCellReuseIdentifier: <span class="type">MyCell</span>.reuseID)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">        <span class="comment">// Do any additional setup after loading the view.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">ViewController</span>:<span class="title">UITableViewDelegate</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, didSelectRowAt indexPath: IndexPath)</span></span> &#123;</span><br><span class="line">        data[indexPath.row].comments.append(<span class="string">"新添了一条评论"</span>)</span><br><span class="line">        tableView.reloadRows(at: [indexPath], with: .automatic)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">ViewController</span>:<span class="title">UITableViewDataSource</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, numberOfRowsInSection section: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> data.<span class="built_in">count</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> cell = tableView.dequeueReusableCell(withIdentifier: <span class="type">MyCell</span>.reuseID, <span class="keyword">for</span>: indexPath) <span class="keyword">as</span>! <span class="type">MyCell</span></span><br><span class="line">        <span class="keyword">let</span> a = cell</span><br><span class="line">        a.stackview.subviews.forEach&#123;$<span class="number">0</span>.removeFromSuperview()&#125;</span><br><span class="line">        data[indexPath.row].comments.forEach&#123; comment <span class="keyword">in</span> a.stackview.addArrangedSubview(a.initComment(text: comment))&#125;</span><br><span class="line">        <span class="keyword">return</span> cell</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -288,8 +318,6 @@
             
           
           <div class="post-tags">
-            
-              <a href="/tags/Swift/" rel="tag"># Swift</a>
             
               <a href="/tags/iOS/" rel="tag"># iOS</a>
             
@@ -328,47 +356,7 @@
           </div>
           
     
-      <div class="tabs tabs-comment">
-        <ul class="nav-tabs">
-          
-            <li class="tab"><a href="#comment-gitalk">gitalk</a></li>
-          
-            <li class="tab"><a href="#comment-valine">valine</a></li>
-          
-        </ul>
-        <div class="tab-content">
-          
-            <div class="tab-pane gitalk" id="comment-gitalk">
-              <div class="comments" id="gitalk-container"></div>
-            </div>
-          
-            <div class="tab-pane valine" id="comment-valine">
-              <div class="comments" id="comments"></div>
-            </div>
-          
-        </div>
-      </div>
-      <script>
-        window.addEventListener('tabs:register', () => {
-          let activeClass = '';
-          
-            activeClass = localStorage.getItem('comments_active') || activeClass;
-          
-          if (activeClass) {
-            let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-            if (activeTab) {
-              activeTab.click();
-            }
-          }
-        });
-        
-        window.addEventListener('tabs:click', event => {
-          let commentClass = event.target.classList[1];
-          localStorage.setItem('comments_active', commentClass);
-        });
-        
-      </script>
-    
+    <div class="comments" id="gitalk-container"></div>
   
 
         </div>
@@ -401,6 +389,10 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc">
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#UITableView"><span class="nav-number">1.</span> <span class="nav-text">UITableView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义Cell-StackView-SnapKit-纯代码版本"><span class="nav-number">2.</span> <span class="nav-text">自定义Cell: StackView + SnapKit 纯代码版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#效果"><span class="nav-number">3.</span> <span class="nav-text">效果</span></a></li></ol></div>
+          </div>
+        
       </div>
       <!--/noindex-->
 
@@ -579,31 +571,6 @@
     });
     gitalk.render('gitalk-container');
   }, window.Gitalk);
-</script>
-
-
-<script>
-NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-  var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail,link';
-  guest = guest.split(',').filter(item => {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#comments',
-    verify: false,
-    notify: false,
-    appId: 'AGYWgNvfRmveIWkTPMcCP9I7-MdYXbMMI',
-    appKey: 'XMWtFVafQaeqTzKEtGvSrheG',
-    placeholder: 'Just go go',
-    avatar: '/images/avatar.JPG',
-    meta: guest,
-    pageSize: '10' || 10,
-    visitor: false,
-    lang: 'en' || 'zh-cn',
-    path: location.pathname
-  });
-}, window.Valine);
 </script>
 
 </body>

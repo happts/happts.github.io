@@ -54,21 +54,22 @@
   };
 </script>
 
-  <meta name="description" content="回顾一下拿Storyboard练手学习iOS完成APP的经历.  总结:  如果App之后的迭代不会有大改动,可以用,加快开发速度. 否则还是算了吧. 用来写demo还挺方便的. 而且我遇到的问题肯定有一些是自己漏学的知识而导致绕了弯路.">
+  <meta name="description" content="回顾一下拿Storyboard练手学习iOS完成APP的经历.  总结:  如果App之后的迭代不会有大改动,可以用,加快开发速度. 否则改起来相当麻烦,比如各种ID的引用全是通过字符串,只有运行时才会报错 . 不过用来写demo还挺方便的. 而且我肯定有自己漏学知识而导致绕了弯路的情况, 比如很多可以复用的地方重复实现, 冗余很高.">
 <meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用 Storyboard 的一些反思">
+<meta property="og:title" content="初次使用 Storyboard 的经历">
 <meta property="og:url" content="http://happts.github.io/2020/01/11/something-about-Storyboard/index.html">
 <meta property="og:site_name" content="happt&#39;s blog">
-<meta property="og:description" content="回顾一下拿Storyboard练手学习iOS完成APP的经历.  总结:  如果App之后的迭代不会有大改动,可以用,加快开发速度. 否则还是算了吧. 用来写demo还挺方便的. 而且我遇到的问题肯定有一些是自己漏学的知识而导致绕了弯路.">
+<meta property="og:description" content="回顾一下拿Storyboard练手学习iOS完成APP的经历.  总结:  如果App之后的迭代不会有大改动,可以用,加快开发速度. 否则改起来相当麻烦,比如各种ID的引用全是通过字符串,只有运行时才会报错 . 不过用来写demo还挺方便的. 而且我肯定有自己漏学知识而导致绕了弯路的情况, 比如很多可以复用的地方重复实现, 冗余很高.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/happts/ForPicGo/master/sb0.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/happts/ForPicGo/master/sb1.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/happts/ForPicGo/master/sb2.png">
-<meta property="og:updated_time" content="2020-01-14T15:10:01.090Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/happts/ForPicGo/master/sb3.png">
+<meta property="og:updated_time" content="2020-01-18T05:58:07.711Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用 Storyboard 的一些反思">
-<meta name="twitter:description" content="回顾一下拿Storyboard练手学习iOS完成APP的经历.  总结:  如果App之后的迭代不会有大改动,可以用,加快开发速度. 否则还是算了吧. 用来写demo还挺方便的. 而且我遇到的问题肯定有一些是自己漏学的知识而导致绕了弯路.">
+<meta name="twitter:title" content="初次使用 Storyboard 的经历">
+<meta name="twitter:description" content="回顾一下拿Storyboard练手学习iOS完成APP的经历.  总结:  如果App之后的迭代不会有大改动,可以用,加快开发速度. 否则改起来相当麻烦,比如各种ID的引用全是通过字符串,只有运行时才会报错 . 不过用来写demo还挺方便的. 而且我肯定有自己漏学知识而导致绕了弯路的情况, 比如很多可以复用的地方重复实现, 冗余很高.">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/happts/ForPicGo/master/sb0.png">
   <link rel="canonical" href="http://happts.github.io/2020/01/11/something-about-Storyboard/">
 
@@ -84,7 +85,7 @@
   };
 </script>
 
-  <title>使用 Storyboard 的一些反思 | happt's blog</title>
+  <title>初次使用 Storyboard 的经历 | happt's blog</title>
   <meta name="generator" content="Hexo 3.9.0">
   
 
@@ -228,7 +229,7 @@
       <meta itemprop="name" content="happt's blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">使用 Storyboard 的一些反思
+        <h1 class="post-title" itemprop="name headline">初次使用 Storyboard 的经历
 
           
         </h1>
@@ -255,7 +256,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-14 23:10:01" itemprop="dateModified" datetime="2020-01-14T23:10:01+08:00">2020-01-14</time>
+                <time title="修改时间：2020-01-18 13:58:07" itemprop="dateModified" datetime="2020-01-18T13:58:07+08:00">2020-01-18</time>
               </span>
             
           
@@ -272,7 +273,7 @@
 
       
         <p>回顾一下拿Storyboard练手学习iOS完成APP的经历. </p>
-<p>总结:  如果App之后的迭代不会有大改动,可以用,加快开发速度. 否则还是算了吧. 用来写demo还挺方便的. 而且我遇到的问题肯定有一些是自己漏学的知识而导致绕了弯路. </p>
+<p>总结:  如果App之后的迭代不会有大改动,可以用,加快开发速度. 否则改起来相当麻烦,比如各种ID的引用全是通过字符串,只有运行时才会报错 . 不过用来写demo还挺方便的. 而且我肯定有自己漏学知识而导致绕了弯路的情况, 比如很多可以复用的地方重复实现, 冗余很高.</p>
 <a id="more"></a>
 
 <h1 id="快速搭建"><a href="#快速搭建" class="headerlink" title="快速搭建"></a>快速搭建</h1><p>不得不说, Storyboard的可以快速地把原型的轮廓实现出来,非常直观. </p>
@@ -280,7 +281,7 @@
 <p><img src="https://raw.githubusercontent.com/happts/ForPicGo/master/sb0.png" alt></p>
 <h1 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h1><p>对于我来说, Storyboard除了方便快捷搭出来初版,暂时就没想到了. 隐藏了太多很重要的元素. </p>
 <p>上面的截图为例子.  NavigationController只是一个容器(VC栈), 使用过程中不会出现. 对于root VC, 以及之后的present方式, 在初次使用时都是不必了解的. (所以我学到的真的太少啦)</p>
-<h2 id="NavigationController-以及页面的跳转"><a href="#NavigationController-以及页面的跳转" class="headerlink" title="NavigationController 以及页面的跳转"></a>NavigationController 以及页面的跳转</h2><h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>对于一个NavigationController, 是一个栈, 用来容纳VC. 首先需要设置一个rootVC作为第一个出现的VC.  依据具体情况,后续的VC在sb中连线segue通过show的方式出现,但在代码实现时都要依托NavigationController进行pop或者push. 而不是直接present. 或者说, 通过使用show让App自己判断该通过什么方式展示. </p>
+<h2 id="NavigationController-以及页面的跳转"><a href="#NavigationController-以及页面的跳转" class="headerlink" title="NavigationController 以及页面的跳转"></a>NavigationController 以及页面的跳转</h2><p>对于一个NavigationController, 是一个栈, 用来容纳VC. 首先需要设置一个rootVC作为第一个出现的VC.  依据具体情况,后续的VC在sb中连线segue通过show的方式出现,但在代码实现时都要依托NavigationController进行pop或者push. 而不是直接present. 或者说, 通过使用show让App自己判断该通过什么方式展示. </p>
 <p>所以这时候要去康康苹果的文章 <a href="https://developer.apple.com/documentation/uikit/view_controllers/showing_and_hiding_view_controllers" target="_blank" rel="noopener">Showing and Hiding View Controllers</a></p>
 <p>用到的就是下面这俩⬇️</p>
 <ul>
@@ -295,7 +296,15 @@
 <p>新建XIB-绑定Class-连线</p>
 <img src="https://raw.githubusercontent.com/happts/ForPicGo/master/sb2.png" style="zoom:80%;"> 
 
-<p>[未完待续]</p>
+<p>使用的时候去给对应的tableview注册cell.注意是UINib取得cell的</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line">tableView.register(<span class="type">UINib</span>(nibName:<span class="string">"KeyValueTableViewCell"</span>,bundle:<span class="literal">nil</span>), forCellReuseIdentifier: <span class="string">"keyValueCell"</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Storyboard拆分-Stroyboard-reference"><a href="#Storyboard拆分-Stroyboard-reference" class="headerlink" title="Storyboard拆分 (Stroyboard reference)"></a>Storyboard拆分 (Stroyboard reference)</h2><p>一个Storyboard里面的Scene过多, 打开的时候就卡得不行(Storyboard太吃内存). 可以根据相关性拆分成多个Storyboardboard.既便于开发, 还能复用.</p>
+<p>这里是依据多个Tab拆的.(TabBarController 装了五个Navigation Controller)</p>
+<img src="https://raw.githubusercontent.com/happts/ForPicGo/master/sb3.png">
+
+<p>具体操作就是选中你要拆走的Scene, 然后Editor-Refactor to Storyboard, 生成新的Storyboard. 更多详细的Storyboard reference请自行搜索</p>
+<p><a href="https://developer.apple.com/videos/play/wwdc2015/215/" target="_blank" rel="noopener">WWDC的相关内容</a></p>
 
     </div>
 
@@ -382,7 +391,7 @@
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc">
-            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#快速搭建"><span class="nav-number">1.</span> <span class="nav-text">快速搭建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#反思"><span class="nav-number">2.</span> <span class="nav-text">反思</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NavigationController-以及页面的跳转"><span class="nav-number">2.1.</span> <span class="nav-text">NavigationController 以及页面的跳转</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#碎碎念"><span class="nav-number">2.1.1.</span> <span class="nav-text">碎碎念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TableviewCell-的复用"><span class="nav-number">2.2.</span> <span class="nav-text">TableviewCell 的复用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#目前的解决方式"><span class="nav-number">2.2.1.</span> <span class="nav-text">目前的解决方式</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#快速搭建"><span class="nav-number">1.</span> <span class="nav-text">快速搭建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#反思"><span class="nav-number">2.</span> <span class="nav-text">反思</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NavigationController-以及页面的跳转"><span class="nav-number">2.1.</span> <span class="nav-text">NavigationController 以及页面的跳转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TableviewCell-的复用"><span class="nav-number">2.2.</span> <span class="nav-text">TableviewCell 的复用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#目前的解决方式"><span class="nav-number">2.2.1.</span> <span class="nav-text">目前的解决方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Storyboard拆分-Stroyboard-reference"><span class="nav-number">2.3.</span> <span class="nav-text">Storyboard拆分 (Stroyboard reference)</span></a></li></ol></li></ol></div>
           </div>
         
       </div>
